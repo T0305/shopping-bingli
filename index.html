@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="购物病历，618 前先挂个号，测测你的钱包得了什么病。"
+    />
+    <meta property="og:title" content="购物病历｜测测你的钱包人格病历" />
+    <meta property="og:description" content="不是乱买，是你的消费人格在发言。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bingli.200305.xyz/" />
+    <meta property="og:image" content="https://bingli.200305.xyz/assets/share-cover.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="购物病历｜测测你的钱包人格病历" />
+    <meta name="twitter:description" content="不是乱买，是你的消费人格在发言。" />
+    <meta name="twitter:image" content="https://bingli.200305.xyz/assets/share-cover.png" />
+    <title>购物病历 | 618 前先挂个号</title>
+    <link rel="stylesheet" href="./styles.css?v=hero-tight-card-ratio" />
+    <script
+      defer
+      src="https://cloud.umami.is/script.js"
+      data-website-id="REPLACE_WITH_UMAMI_WEBSITE_ID"
+    ></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <section id="homeView" class="view active" aria-labelledby="homeTitle">
+        <div class="hero">
+          <div class="hero-stickers" aria-hidden="true">
+            <span>NO.618</span>
+            <span>小红书可截图</span>
+            <span>钱包人格采样</span>
+          </div>
+          <p class="eyebrow">甜酷消费人格测试</p>
+          <h1 id="homeTitle">测测你的钱包人格病历</h1>
+          <p class="hero-copy">不是乱买，是你的消费人格在发言。</p>
+          <div class="hero-card" aria-hidden="true">
+            <div class="paper-slip slip-a"></div>
+            <div class="paper-slip slip-b"></div>
+            <div class="chart-line"></div>
+            <p>人格头像框</p>
+            <strong>待生成</strong>
+          </div>
+        </div>
+
+        <section class="role-showcase" aria-labelledby="roleShowcaseTitle">
+          <div class="role-showcase-head">
+            <p class="eyebrow">人格角色卡预览</p>
+            <h2 id="roleShowcaseTitle">8 种钱包人格正在排队路过</h2>
+            <span>像收藏贴纸一样，测完会生成你的专属卡</span>
+          </div>
+          <div id="roleMarquee" class="role-marquee" aria-hidden="true"></div>
+        </section>
+
+        <div class="quick-stats" aria-label="产品特点">
+          <div>
+            <strong>3分钟</strong>
+            <span>完成采样</span>
+          </div>
+          <div>
+            <strong>8</strong>
+            <span>种病历人格</span>
+          </div>
+          <div>
+            <strong>关系卡</strong>
+            <span>可邀闺蜜互测</span>
+          </div>
+        </div>
+
+        <section class="panel">
+          <h2>测试前贴纸</h2>
+          <p>
+            本测试不读取账单、不上传订单、不接 AI。你只需要诚实选择，系统会给你开一张
+            618 消费精神状态档案。
+          </p>
+          <button id="startBtn" class="primary-button">开始挂号</button>
+        </section>
+
+        <section class="panel compact">
+          <h2>今日候诊热词</h2>
+          <div class="tag-cloud">
+            <span>补贴神谕</span>
+            <span>情绪急诊</span>
+            <span>赠品绑架</span>
+            <span>气氛收编</span>
+          </div>
+        </section>
+      </section>
+
+      <section id="quizView" class="view" aria-labelledby="quizTitle">
+        <header class="topline">
+          <button id="backHomeBtn" class="icon-button" aria-label="返回首页">‹</button>
+          <div>
+            <p class="eyebrow">症状采样中</p>
+            <h1 id="quizTitle">抽象诊室卡</h1>
+          </div>
+          <span id="questionCount" class="count-pill">1/24</span>
+        </header>
+
+        <div class="progress-track" aria-hidden="true">
+          <div id="progressBar" class="progress-fill"></div>
+        </div>
+
+        <section class="question-card">
+          <p id="questionKicker" class="question-kicker"></p>
+          <h2 id="questionText"></h2>
+          <div id="optionList" class="option-list"></div>
+        </section>
+      </section>
+
+      <section id="resultView" class="view" aria-labelledby="resultTitle">
+        <header class="topline">
+          <button id="restartTopBtn" class="icon-button" aria-label="重新测试">‹</button>
+          <div>
+            <p class="eyebrow">诊断完成</p>
+            <h1 id="resultTitle">你的钱包人格档案</h1>
+          </div>
+          <span id="dangerPill" class="count-pill"></span>
+        </header>
+
+        <article id="diagnosisCard" class="diagnosis-card">
+          <div class="stamp">618 门诊</div>
+          <p class="eyebrow">抽象病历梗图报告</p>
+          <h2 id="diagnosisName"></h2>
+          <p id="diagnosisSubtype" class="diagnosis-code"></p>
+          <p id="diagnosisSubtitle" class="diagnosis-subtitle"></p>
+          <div id="resultTags" class="result-tags" aria-label="结果摘要标签"></div>
+
+          <figure class="role-card">
+            <div id="roleCardArt" class="role-card-art" role="img" aria-label=""></div>
+          </figure>
+
+          <div class="danger-row">
+            <span>钱包危险等级</span>
+            <strong id="dangerStars"></strong>
+          </div>
+
+          <dl class="report-list">
+            <div class="wide">
+              <dt>人格切片</dt>
+              <dd id="personaText"></dd>
+            </div>
+            <div class="wide">
+              <dt>精神状态</dt>
+              <dd id="verdictText"></dd>
+            </div>
+            <div>
+              <dt>钱包雷区</dt>
+              <dd id="symptomText"></dd>
+            </div>
+            <div>
+              <dt>高发场景</dt>
+              <dd id="sceneText"></dd>
+            </div>
+            <div>
+              <dt>今日处方</dt>
+              <dd id="prescriptionText"></dd>
+            </div>
+            <div>
+              <dt>复查提醒</dt>
+              <dd id="adviceText"></dd>
+            </div>
+          </dl>
+
+          <div class="dimension-grid" id="dimensionGrid"></div>
+        </article>
+
+        <section id="friendPanel" class="friend-panel hidden">
+          <p class="eyebrow">闺蜜钱包搭档测试</p>
+          <h2 id="friendTitle"></h2>
+          <div id="pairCardArt" class="pair-card-art" role="img" aria-label=""></div>
+          <dl class="pair-report">
+            <div>
+              <dt>一起逛街危险指数</dt>
+              <dd id="friendText"></dd>
+            </div>
+            <div>
+              <dt>为什么会这样</dt>
+              <dd id="friendBasis"></dd>
+            </div>
+            <div>
+              <dt>相处建议</dt>
+              <dd id="friendAdvice"></dd>
+            </div>
+          </dl>
+        </section>
+
+        <canvas id="shareCanvas" width="1080" height="1440" aria-label="购物病历分享图"></canvas>
+
+        <label class="invite-field">
+          <span>朋友挂号链接</span>
+          <input id="inviteLinkField" readonly />
+        </label>
+
+        <div class="action-grid">
+          <button id="saveImageBtn" class="primary-button">生成分享图</button>
+          <button id="inviteBtn" class="secondary-button">让朋友也挂号</button>
+          <button id="copyInviteBtn" class="secondary-button">复制邀请链接</button>
+          <button id="restartBtn" class="ghost-button">重新测试</button>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="./app.js?v=hero-tight-card-ratio"></script>
+  </body>
+</html>
