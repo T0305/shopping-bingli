@@ -2245,18 +2245,18 @@ html[lang="zh-CN"] .guide-section .section-heading h2 {
   }
 
   html[lang="en"] .hero h1 em {
+    display: block;
+    width: fit-content;
     max-width: 100%;
     padding: 4px 8px 7px;
+    font-size: clamp(37px, 10.8vw, 48px);
+    line-height: 0.94;
+    white-space: nowrap;
+    transform: rotate(-1deg);
   }
 
   html[lang="en"] .hero::after {
-    right: 8px;
-    top: 52px;
-    max-width: 180px;
-    padding: 6px 8px;
-    font-size: 8px;
-    line-height: 1.25;
-    text-align: center;
+    display: none;
   }
 
   html[lang="en"] .deck-card strong {
