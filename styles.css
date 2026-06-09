@@ -152,6 +152,10 @@ h2 {
   transform: rotate(6deg);
 }
 
+html[lang="en"] .hero::after {
+  content: "WALLET PERSONALITY FILE / FOR FUN ONLY";
+}
+
 .hero-topline {
   position: relative;
   z-index: 3;
@@ -401,7 +405,7 @@ h2 {
 
 .marquee-row {
   position: relative;
-  min-height: 286px;
+  min-height: 334px;
   overflow: hidden;
   border-bottom: 2px solid var(--ink);
 }
@@ -428,10 +432,18 @@ h2 {
   background: var(--cyan);
 }
 
+html[lang="en"] .marquee-row.single::before {
+  content: "SOLO / PERSONALITY FILES";
+}
+
+html[lang="en"] .marquee-row.duo::before {
+  content: "DUO / ACCOMPLICE FILES";
+}
+
 .marquee-track {
   position: absolute;
   left: 0;
-  top: 48px;
+  top: 40px;
   display: flex;
   width: max-content;
   gap: 16px;
@@ -687,6 +699,10 @@ h2 {
   transform: rotate(9deg);
 }
 
+html[lang="en"] .question-card::after {
+  content: "NO PRETENDING TO BE RATIONAL";
+}
+
 .question-kicker {
   display: inline-block;
   margin-bottom: 22px;
@@ -898,6 +914,10 @@ h2 {
   transform: rotate(-5deg);
 }
 
+html[lang="en"] .role-card::before {
+  content: "READ AND PROCEEDED TO CHECKOUT";
+}
+
 .role-card-art,
 .pair-card-art {
   width: 100%;
@@ -1065,6 +1085,10 @@ h2 {
   font-weight: 950;
   background: var(--acid);
   transform: rotate(4deg);
+}
+
+html[lang="en"] .friend-panel::before {
+  content: "JOINT CHECKOUT RISK LAB";
 }
 
 .friend-panel h2 {
@@ -1318,7 +1342,7 @@ h2 {
   }
 
   .marquee-row {
-    min-height: 250px;
+    min-height: 312px;
   }
 
   .marquee-card {
