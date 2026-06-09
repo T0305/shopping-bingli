@@ -271,6 +271,115 @@ const state = {
 const $ = (id) => document.getElementById(id);
 const views = ["homeView", "quizView", "resultView"];
 const pendingTrackEvents = [];
+const translations = window.BINGLI_I18N || {};
+const supportedLanguages = ["zh", "en"];
+const chineseUi = {
+  restart: "重新测试",
+  quizEyebrow: "症状采样中",
+  quizTitle: "抽象诊室卡",
+  resultEyebrow: "诊断完成",
+  resultTitle: "你的钱包人格档案",
+  reportEyebrow: "抽象病历梗图报告",
+  clinic: "618 门诊",
+  danger: "钱包危险等级",
+  persona: "人格切片",
+  verdict: "精神状态",
+  symptom: "钱包雷区",
+  scene: "高发场景",
+  prescription: "今日处方",
+  advice: "复查提醒",
+  friendEyebrow: "闺蜜钱包搭档测试",
+  friendRisk: "一起逛街危险指数",
+  friendWhy: "为什么会这样",
+  friendAdvice: "相处建议",
+  inviteLabel: "朋友挂号链接",
+  shareImage: "生成分享图",
+  inviteFriend: "让朋友也挂号",
+  copyLink: "复制邀请链接"
+};
+const requestedLanguage = new URLSearchParams(window.location.search).get("lang");
+let currentLanguage = supportedLanguages.includes(requestedLanguage)
+  ? requestedLanguage
+  : localStorage.getItem("shopping-bingli-language") || "zh";
+
+function isEnglish() {
+  return currentLanguage === "en";
+}
+
+function englishData() {
+  return translations.en || {};
+}
+
+function uiText(key, fallback = "") {
+  return isEnglish() ? englishData().ui?.[key] || fallback : chineseUi[key] || fallback;
+}
+
+function dimensionLabel(key) {
+  return isEnglish() ? englishData().dimensions?.[key] || dimensions[key] : dimensions[key];
+}
+
+function localizedResult(result) {
+  if (!result || !isEnglish()) return result;
+  return {
+    ...result,
+    ...(englishData().diagnoses?.[result.diagnosisKey] || {})
+  };
+}
+
+function localizedRelation(relation) {
+  if (!relation || !isEnglish()) return relation;
+  const localized = englishData().relations?.[relation.key];
+  if (!localized) return relation;
+  return {
+    ...relation,
+    title: localized[0],
+    text: localized[1],
+    advice: localized[2]
+  };
+}
+
+function updateLanguageInUrl(language) {
+  const url = new URL(window.location.href);
+  url.searchParams.set("lang", language);
+  window.history.replaceState({}, "", url);
+}
+
+function applyLanguage(language, updateUrl = true) {
+  currentLanguage = supportedLanguages.includes(language) ? language : "zh";
+  localStorage.setItem("shopping-bingli-language", currentLanguage);
+  document.documentElement.lang = isEnglish() ? "en" : "zh-CN";
+
+  document.querySelectorAll("[data-zh][data-en]").forEach((node) => {
+    node.textContent = node.dataset[currentLanguage];
+  });
+  document.querySelectorAll("[data-aria-zh][data-aria-en]").forEach((node) => {
+    node.setAttribute("aria-label", node.dataset[`aria${isEnglish() ? "En" : "Zh"}`]);
+  });
+  document.querySelectorAll("[data-ui]").forEach((node) => {
+    const fallback = chineseUi[node.dataset.ui] || node.textContent;
+    node.textContent = uiText(node.dataset.ui, fallback);
+  });
+  document.querySelectorAll("[data-lang-switch]").forEach((button) => {
+    const active = button.dataset.langSwitch === currentLanguage;
+    button.setAttribute("aria-pressed", String(active));
+    button.classList.toggle("active", active);
+  });
+
+  document.title = isEnglish()
+    ? "Shopping Bingli | Discover Your Wallet Personality"
+    : "购物病历 | 618 前先挂个号";
+  const description = document.querySelector('meta[name="description"]');
+  if (description) {
+    description.content = isEnglish()
+      ? "A playful 24-question test that reveals your wallet personality, shopping triggers and friend compatibility."
+      : "购物病历，618 前先挂个号，测测你的钱包得了什么病。";
+  }
+  if (updateUrl) updateLanguageInUrl(currentLanguage);
+
+  renderRoleMarquee();
+  if ($("quizView")?.classList.contains("active")) renderQuestion();
+  if ($("resultView")?.classList.contains("active") && state.result) renderResult();
+}
 
 function flushTrackEvents() {
   if (!window.umami || typeof window.umami.track !== "function") return false;
@@ -327,15 +436,21 @@ function renderRoleMarquee() {
   root.innerHTML = rows
     .map(({ items: rowItems, rowClass, artClass, reverse }) => {
       const doubled = [...rowItems, ...rowItems];
-      const cards = doubled.map((item) => `
+      const cards = doubled.map((item) => {
+        const localized = localizedResult({ ...item, diagnosisKey: item.key });
+        const relationTranslation = isEnglish() ? englishData().relations?.[item.key] : null;
+        const name = relationTranslation?.[0] || localized.name;
+        const subtype = relationTranslation ? "Friend compatibility card" : localized.subtype.replace("SBTI：", "").replace("SBTI:", "");
+        return `
         <article class="marquee-card ${rowClass}-card">
           <div class="marquee-art ${artClass}" style="--sprite-pos:${item.card || roleCards[item.key]}" aria-hidden="true"></div>
           <div>
-            <strong>${item.name}</strong>
-            <span>${item.subtype.replace("SBTI：", "")}</span>
+            <strong>${name}</strong>
+            <span>${subtype}</span>
           </div>
         </article>
-      `).join("");
+      `;
+      }).join("");
       return `<div class="marquee-row ${rowClass} ${reverse ? "reverse" : ""}"><div class="marquee-track">${cards}</div></div>`;
     })
     .join("");
@@ -366,11 +481,12 @@ function startQuiz() {
 
 function renderQuestion() {
   const question = questions[state.current];
+  const englishQuestion = englishData().questions?.[state.current];
   const progress = ((state.current + 1) / questions.length) * 100;
   $("questionCount").textContent = `${state.current + 1}/${questions.length}`;
   $("progressBar").style.width = `${progress}%`;
-  $("questionKicker").textContent = question.kicker;
-  $("questionText").textContent = question.text;
+  $("questionKicker").textContent = isEnglish() && englishQuestion ? englishQuestion[0] : question.kicker;
+  $("questionText").textContent = isEnglish() && englishQuestion ? englishQuestion[1] : question.text;
 
   const list = $("optionList");
   list.innerHTML = "";
@@ -379,7 +495,11 @@ function renderQuestion() {
     button.type = "button";
     button.className = "option-button";
     const marks = ["✓", "×", "?"];
-    button.innerHTML = `<b aria-hidden="true">${marks[index]}</b><strong>${option.text}</strong><span>${option.hint}</span>`;
+    const optionKeys = ["yes", "no", "unsure"];
+    const hintKeys = ["yesHint", "noHint", "unsureHint"];
+    const optionText = isEnglish() ? uiText(optionKeys[index], option.text) : option.text;
+    const optionHint = isEnglish() ? uiText(hintKeys[index], option.hint) : option.hint;
+    button.innerHTML = `<b aria-hidden="true">${marks[index]}</b><strong>${optionText}</strong><span>${optionHint}</span>`;
     button.addEventListener("click", () => answerQuestion(index));
     list.appendChild(button);
   });
@@ -453,6 +573,15 @@ function computeRelation(host, guest) {
   };
 }
 
+function relationBasis(relation) {
+  if (!isEnglish()) return relation.basis;
+  const { hostTop, guestTop, strongestGap } = relation;
+  if (hostTop.key === guestTop.key) {
+    return `Your highest dimension is the same: “${dimensionLabel(hostTop.key)}.” You scored ${guestTop.value}; your friend scored ${hostTop.value}. The pairing amplifies the same shopping trigger.`;
+  }
+  return `Your highest dimension is “${dimensionLabel(guestTop.key)}” (${guestTop.value}); your friend’s is “${dimensionLabel(hostTop.key)}” (${hostTop.value}). Your largest gap is “${dimensionLabel(strongestGap.key)},” at ${strongestGap.gap} points. This duo result comes directly from both original score profiles.`;
+}
+
 function topDimension(scores) {
   const [key, value] = Object.entries(scores).sort((a, b) => b[1] - a[1])[0];
   return { key, value };
@@ -465,16 +594,16 @@ function biggestDimensionGap(aScores, bScores) {
 }
 
 function renderResult() {
-  const result = state.result;
+  const result = localizedResult(state.result);
   $("diagnosisName").textContent = result.name;
   $("diagnosisSubtype").textContent = result.subtype;
   $("diagnosisSubtitle").textContent = result.subtitle;
   $("dangerStars").textContent = "●".repeat(result.danger) + "○".repeat(5 - result.danger);
   $("dangerPill").textContent = `${result.danger}/5`;
   $("resultTags").innerHTML = [
-    `消费人格：${dimensions[result.primaryKey]}`,
-    `钱包雷区：${dimensions[result.secondaryKey]}`,
-    "适合转发给：每年都说最后一次的人"
+    `${uiText("resultTagPersonality", "消费人格")}：${dimensionLabel(result.primaryKey)}`,
+    `${uiText("resultTagTrigger", "钱包雷区")}：${dimensionLabel(result.secondaryKey)}`,
+    uiText("resultTagShare", "适合转发给：每年都说最后一次的人")
   ].map((tag) => `<span>${tag}</span>`).join("");
   $("personaText").textContent = result.persona;
   $("verdictText").textContent = result.verdict;
@@ -485,19 +614,23 @@ function renderResult() {
   const roleCardArt = $("roleCardArt");
   roleCardArt.className = `role-card-art art-${result.diagnosisKey}`;
   roleCardArt.style.backgroundPosition = result.roleCard;
-  roleCardArt.setAttribute("aria-label", `${result.name} Image2 抽象角色卡`);
-  renderDimensions(result.scores);
+  roleCardArt.setAttribute("aria-label", `${result.name} Image2 ${uiText("roleCard", "抽象角色卡")}`);
+  renderDimensions(state.result.scores);
 
   if (state.friendRelation && state.hostResult) {
+    const relation = localizedRelation(state.friendRelation);
+    const host = localizedResult(state.hostResult);
     $("friendPanel").classList.remove("hidden");
-    $("friendTitle").textContent = state.friendRelation.title;
-    $("friendText").textContent = `你是「${result.name}」，朋友是「${state.hostResult.name}」。${state.friendRelation.text}`;
-    $("friendBasis").textContent = state.friendRelation.basis;
-    $("friendAdvice").textContent = state.friendRelation.advice;
+    $("friendTitle").textContent = relation.title;
+    $("friendText").textContent = isEnglish()
+      ? `You are “${result.name}.” Your friend is “${host.name}.” ${relation.text}`
+      : `你是「${result.name}」，朋友是「${host.name}」。${relation.text}`;
+    $("friendBasis").textContent = relationBasis(state.friendRelation);
+    $("friendAdvice").textContent = relation.advice;
     const pairCardArt = $("pairCardArt");
     pairCardArt.className = `pair-card-art pair-${state.friendRelation.key}`;
     pairCardArt.style.backgroundPosition = state.friendRelation.card;
-    pairCardArt.setAttribute("aria-label", `${state.friendRelation.title} Image2 双人搭档卡`);
+    pairCardArt.setAttribute("aria-label", `${relation.title} Image2 ${uiText("pairCard", "双人搭档卡")}`);
   } else {
     $("friendPanel").classList.add("hidden");
   }
@@ -513,7 +646,7 @@ function renderDimensions(scores) {
     const item = document.createElement("div");
     item.className = "dimension-item";
     item.style.setProperty("--score", `${percent}%`);
-    item.innerHTML = `<strong>${scores[key]}</strong><span>${label}</span><i style="height:${percent}%"></i>`;
+    item.innerHTML = `<strong>${scores[key]}</strong><span>${dimensionLabel(key)}</span><i style="height:${percent}%"></i>`;
     grid.appendChild(item);
   });
 }
@@ -545,14 +678,14 @@ async function copyInvite(eventName = "copy_invite_link") {
   try {
     await navigator.clipboard.writeText(link);
     trackEvent(eventName, { diagnosisKey: state.result?.diagnosisKey || "unknown" });
-    toast("邀请链接已复制，转给最该挂号的人。");
+    toast(uiText("copied", "邀请链接已复制，转给最该挂号的人。"));
   } catch {
     const input = $("inviteLinkField");
     input.focus();
     input.select();
     document.execCommand("copy");
     trackEvent(eventName, { diagnosisKey: state.result?.diagnosisKey || "unknown" });
-    toast("邀请链接已复制。");
+    toast(uiText("copied", "邀请链接已复制。"));
   }
 }
 
@@ -563,7 +696,12 @@ function loadFriendFromHash() {
   if (!payload || !payload.name || !payload.scores) return false;
   state.hostResult = payload;
   trackEvent("open_friend_invite", { hostDiagnosisKey: payload.diagnosisKey || "unknown" });
-  toast(`朋友是「${payload.name}」，现在轮到你挂号。`);
+  const host = localizedResult(payload);
+  toast(
+    isEnglish()
+      ? uiText("friendOpened", "Your friend is “{name}.” Now it is your turn.").replace("{name}", host.name)
+      : `朋友是「${host.name}」，现在轮到你挂号。`
+  );
   startQuiz();
   return true;
 }
@@ -571,9 +709,9 @@ function loadFriendFromHash() {
 function drawShareCard() {
   const canvas = $("shareCanvas");
   const ctx = canvas.getContext("2d");
-  const result = state.result;
-  const relation = state.friendRelation;
-  const host = state.hostResult;
+  const result = localizedResult(state.result);
+  const relation = localizedRelation(state.friendRelation);
+  const host = localizedResult(state.hostResult);
   const isDuo = Boolean(relation && host);
   const width = canvas.width;
   const height = canvas.height;
@@ -597,11 +735,11 @@ function drawShareCard() {
 
   if (isDuo) {
     drawDuoAvatar(ctx, 766, 268, c1, c2, result.name, host.name);
-    drawSticker(ctx, "闺蜜钱包关系卡", 118, 146, "#fff0f6", "#bf5272");
+    drawSticker(ctx, isEnglish() ? "FRIEND WALLET FILE" : "闺蜜钱包关系卡", 118, 146, "#fff0f6", "#bf5272");
 
     ctx.fillStyle = "#49384f";
     ctx.font = '900 32px "Microsoft YaHei", sans-serif';
-    ctx.fillText("618 前先挂个号", 118, 226);
+    ctx.fillText(isEnglish() ? "WALLET PERSONALITY TEST" : "618 前先挂个号", 118, 226);
 
     ctx.fillStyle = "#1f2937";
     ctx.font = '900 72px "Microsoft YaHei", sans-serif';
@@ -609,11 +747,11 @@ function drawShareCard() {
 
     ctx.fillStyle = "#766577";
     ctx.font = '800 28px "Microsoft YaHei", sans-serif';
-    wrapText(ctx, `你：${result.name}  |  朋友：${host.name}`, 118, 520, 800, 38, 2);
+    wrapText(ctx, isEnglish() ? `YOU: ${result.name}  |  FRIEND: ${host.name}` : `你：${result.name}  |  朋友：${host.name}`, 118, 520, 800, 38, 2);
 
-    drawTextPill(ctx, "为什么会这样", relation.basis, 118, 650, 3, "#fff5dc");
-    drawTextPill(ctx, "一起逛街危险指数", relation.text, 118, 920, 2, "#eefbf7");
-    drawTextPill(ctx, "相处建议", relation.advice, 118, 1135, 2, "#f5efff");
+    drawTextPill(ctx, uiText("friendWhy", "为什么会这样"), relationBasis(state.friendRelation), 118, 650, 3, "#fff5dc");
+    drawTextPill(ctx, uiText("friendRisk", "一起逛街危险指数"), relation.text, 118, 920, 2, "#eefbf7");
+    drawTextPill(ctx, uiText("friendAdvice", "相处建议"), relation.advice, 118, 1135, 2, "#f5efff");
 
     ctx.fillStyle = "#bf5272";
     roundRect(ctx, 118, 1304, 844, 72, 36);
@@ -621,7 +759,7 @@ function drawShareCard() {
     ctx.fillStyle = "#ffffff";
     ctx.font = '900 30px "Microsoft YaHei", sans-serif';
     ctx.textAlign = "center";
-    ctx.fillText("这不是乱买，是你们的钱包在合照。", 540, 1349);
+    ctx.fillText(isEnglish() ? "NOT RANDOM SHOPPING. YOUR WALLETS TOOK A PHOTO." : "这不是乱买，是你们的钱包在合照。", 540, 1349);
     ctx.textAlign = "left";
 
     canvas.classList.add("ready");
@@ -629,16 +767,16 @@ function drawShareCard() {
       diagnosisKey: result.diagnosisKey,
       hasFriend: true
     });
-    toast("双人会诊分享图已生成，可以长按保存或截图。");
+    toast(uiText("duoShareReady", "双人会诊分享图已生成，可以长按保存或截图。"));
     return;
   }
 
   drawAbstractAvatar(ctx, 782, 330, c1, c2, result.name);
-  drawSticker(ctx, "消费人格病历", 118, 146, "#fff0f6", "#bf5272");
+  drawSticker(ctx, isEnglish() ? "WALLET PERSONALITY" : "消费人格病历", 118, 146, "#fff0f6", "#bf5272");
 
   ctx.fillStyle = "#49384f";
   ctx.font = '900 32px "Microsoft YaHei", sans-serif';
-  ctx.fillText("618 前先挂个号", 118, 226);
+  ctx.fillText(isEnglish() ? "UNOFFICIAL SHOPPING FILE" : "618 前先挂个号", 118, 226);
 
   ctx.fillStyle = "#1f2937";
   ctx.font = '900 72px "Microsoft YaHei", sans-serif';
@@ -648,10 +786,10 @@ function drawShareCard() {
   ctx.font = '900 28px "Microsoft YaHei", sans-serif';
   wrapText(ctx, result.subtype, 118, 505, 760, 38, 2);
 
-  drawShareRow(ctx, "钱包危险等级", "●".repeat(result.danger) + "○".repeat(5 - result.danger), 118, 610, c1);
-  drawTextPill(ctx, "人格切片", result.persona, 118, 742, 3, "#fff5dc");
-  drawTextPill(ctx, "精神状态", result.verdict, 118, 1006, 2, "#eefbf7");
-  drawTextPill(ctx, "今日处方", result.prescription, 118, 1198, 2, "#f5efff");
+  drawShareRow(ctx, uiText("danger", "钱包危险等级"), "●".repeat(result.danger) + "○".repeat(5 - result.danger), 118, 610, c1);
+  drawTextPill(ctx, uiText("persona", "人格切片"), result.persona, 118, 742, 3, "#fff5dc");
+  drawTextPill(ctx, uiText("verdict", "精神状态"), result.verdict, 118, 1006, 2, "#eefbf7");
+  drawTextPill(ctx, uiText("prescription", "今日处方"), result.prescription, 118, 1198, 2, "#f5efff");
 
   ctx.fillStyle = "#bf5272";
   roundRect(ctx, 118, 1304, 844, 72, 36);
@@ -667,7 +805,7 @@ function drawShareCard() {
     diagnosisKey: result.diagnosisKey,
     hasFriend: false
   });
-  toast("分享图已生成，可以长按保存或截图。");
+  toast(uiText("shareReady", "分享图已生成，可以长按保存或截图。"));
 }
 
 function drawSticker(ctx, text, x, y, bg, color) {
@@ -832,11 +970,14 @@ function bindEvents() {
   $("saveImageBtn").addEventListener("click", drawShareCard);
   $("inviteBtn").addEventListener("click", () => copyInvite("invite_friend"));
   $("copyInviteBtn").addEventListener("click", () => copyInvite("copy_invite_link"));
+  document.querySelectorAll("[data-lang-switch]").forEach((button) => {
+    button.addEventListener("click", () => applyLanguage(button.dataset.langSwitch));
+  });
   window.addEventListener("hashchange", loadFriendFromHash);
 }
 
 bindEvents();
-renderRoleMarquee();
+applyLanguage(currentLanguage, false);
 if (!loadFriendFromHash()) {
   showView("homeView");
 }

@@ -16,8 +16,12 @@
     <meta name="twitter:title" content="购物病历｜测测你的钱包人格病历" />
     <meta name="twitter:description" content="不是乱买，是你的消费人格在发言。" />
     <meta name="twitter:image" content="https://bingli.200305.xyz/assets/share-cover.png" />
+    <link rel="canonical" href="https://bingli.200305.xyz/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://bingli.200305.xyz/?lang=zh" />
+    <link rel="alternate" hreflang="en" href="https://bingli.200305.xyz/?lang=en" />
+    <link rel="alternate" hreflang="x-default" href="https://bingli.200305.xyz/" />
     <title>购物病历 | 618 前先挂个号</title>
-    <link rel="stylesheet" href="./styles.css?v=absurd-editorial-1" />
+    <link rel="stylesheet" href="./styles.css?v=content-i18n-1" />
     <script
       defer
       src="https://cloud.umami.is/script.js"
@@ -26,56 +30,77 @@
   </head>
   <body>
     <main class="app-shell">
+      <header class="site-header">
+        <a class="site-brand" href="./" aria-label="购物病历首页">
+          <span>购物病历</span>
+          <small>SHOPPING BINGLI</small>
+        </a>
+        <nav class="site-nav" aria-label="主导航">
+          <a href="#test" data-zh="测试" data-en="Test">测试</a>
+          <a href="#types" data-zh="人格图鉴" data-en="Types">人格图鉴</a>
+          <a href="#method" data-zh="测试原理" data-en="Method">测试原理</a>
+          <a href="#guides" data-zh="消费指南" data-en="Guides">消费指南</a>
+          <a href="#faq" data-zh="常见问题" data-en="FAQ">常见问题</a>
+        </nav>
+        <div class="language-switch" role="group" aria-label="Language">
+          <button type="button" data-lang-switch="zh" aria-pressed="true">中</button>
+          <button type="button" data-lang-switch="en" aria-pressed="false">EN</button>
+        </div>
+      </header>
+
       <section id="homeView" class="view active" aria-labelledby="homeTitle">
-        <div class="hero">
+        <div id="test" class="hero">
           <div class="hero-topline" aria-hidden="true">
             <span>WALLET CASE NO. 0618</span>
-            <span>拒绝正常 · 允许嘴硬</span>
+            <span data-zh="拒绝正常 · 允许嘴硬" data-en="NORMALITY OPTIONAL · DENIAL ALLOWED">拒绝正常 · 允许嘴硬</span>
           </div>
 
           <div class="hero-layout">
             <div class="hero-copy-block">
-              <p class="eyebrow">非正规消费人格鉴定中心</p>
-              <h1 id="homeTitle">钱包人格<br /><em>病历</em></h1>
-              <p class="hero-copy">
+              <p class="eyebrow" data-zh="非正规消费人格鉴定中心" data-en="UNOFFICIAL SHOPPING PERSONALITY LAB">非正规消费人格鉴定中心</p>
+              <h1 id="homeTitle">
+                <span data-zh="钱包人格" data-en="WALLET">钱包人格</span><br />
+                <em data-zh="病历" data-en="PERSONALITY">病历</em>
+              </h1>
+              <p class="hero-copy" data-zh="测测你为什么总在付款。不是乱买，是欲望在借你的手指上班。" data-en="Find out why you keep checking out. It is not random shopping; desire has borrowed your fingers for a shift.">
                 测测你为什么总在付款。不是乱买，是欲望在借你的手指上班。
               </p>
               <button id="startBtn" class="primary-button hero-cta">
-                <span>开始精神采样</span>
+                <span data-zh="开始精神采样" data-en="START THE TEST">开始精神采样</span>
                 <b aria-hidden="true">→</b>
               </button>
             </div>
 
             <div class="hero-deck" aria-hidden="true">
               <div class="deck-card deck-card-a">
-                <span>主治人格</span>
-                <strong>补贴神谕<br />接收器</strong>
+                <span data-zh="主治人格" data-en="PRIMARY TYPE">主治人格</span>
+                <strong data-zh="补贴神谕接收器" data-en="SUBSIDY ORACLE">补贴神谕接收器</strong>
               </div>
               <div class="deck-card deck-card-b">
-                <span>高危并发症</span>
-                <strong>赠品绑架</strong>
+                <span data-zh="高危并发症" data-en="HIGH-RISK SIDE EFFECT">高危并发症</span>
+                <strong data-zh="赠品绑架" data-en="FREE-GIFT HOSTAGE">赠品绑架</strong>
               </div>
               <div class="deck-card deck-card-c">
-                <span>钱包临终留言</span>
-                <strong>“我本来<br />只想看看”</strong>
+                <span data-zh="钱包临终留言" data-en="LAST WALLET MESSAGE">钱包临终留言</span>
+                <strong data-zh="“我本来只想看看”" data-en="“I WAS JUST LOOKING”">“我本来只想看看”</strong>
               </div>
             </div>
           </div>
 
           <div class="hero-stickers" aria-hidden="true">
-            <span>不看账单</span>
-            <span>专治嘴硬</span>
-            <span>测完可发疯</span>
+            <span data-zh="不看账单" data-en="NO BANK DATA">不看账单</span>
+            <span data-zh="专治嘴硬" data-en="DENIAL FRIENDLY">专治嘴硬</span>
+            <span data-zh="测完可发疯" data-en="MEME-READY RESULT">测完可发疯</span>
           </div>
         </div>
 
-        <section class="role-showcase" aria-labelledby="roleShowcaseTitle">
+        <section id="types" class="role-showcase" aria-labelledby="roleShowcaseTitle">
           <div class="role-showcase-head">
             <div>
-              <p class="eyebrow">嫌疑人格公示栏</p>
-              <h2 id="roleShowcaseTitle">看看哪位正在偷偷使用你的钱包</h2>
+              <p class="eyebrow" data-zh="嫌疑人格公示栏" data-en="PERSONALITY SUSPECT BOARD">嫌疑人格公示栏</p>
+              <h2 id="roleShowcaseTitle" data-zh="看看哪位正在偷偷使用你的钱包" data-en="Meet the personality secretly operating your wallet">看看哪位正在偷偷使用你的钱包</h2>
             </div>
-            <span>上排：单人病历人格<br />下排：闺蜜共犯关系</span>
+            <span data-zh="上排：单人病历人格 / 下排：闺蜜共犯关系" data-en="Top: solo personality files / Bottom: friend accomplice files">上排：单人病历人格 / 下排：闺蜜共犯关系</span>
           </div>
           <div id="roleMarquee" class="role-marquee" aria-hidden="true"></div>
         </section>
@@ -83,45 +108,117 @@
         <div class="quick-stats" aria-label="产品特点">
           <div>
             <strong>24</strong>
-            <span>次灵魂拷问</span>
+            <span data-zh="次灵魂拷问" data-en="honest questions">次灵魂拷问</span>
           </div>
           <div>
             <strong>8</strong>
-            <span>种钱包人格</span>
+            <span data-zh="种钱包人格" data-en="wallet personalities">种钱包人格</span>
           </div>
           <div>
             <strong>∞</strong>
-            <span>种付款借口</span>
+            <span data-zh="种付款借口" data-en="checkout excuses">种付款借口</span>
           </div>
         </div>
 
         <section class="panel">
-          <p class="panel-index">01 / 挂号须知</p>
-          <h2>我们不查账，只查嘴硬程度</h2>
-          <p>
+          <p class="panel-index" data-zh="01 / 挂号须知" data-en="01 / BEFORE YOU START">01 / 挂号须知</p>
+          <h2 data-zh="我们不查账，只查嘴硬程度" data-en="We do not inspect your bank account. We inspect your excuses.">我们不查账，只查嘴硬程度</h2>
+          <p data-zh="不读取账单、不上传订单、不接 AI。你只需在“是 / 否 / 不确定”之间诚实挣扎，系统就会为你的消费精神状态胡说八道，但有理有据。" data-en="No bank statements, order uploads or AI profiling. Choose Yes, No or Not sure. The scoring system turns your answers into a playful, evidence-based wallet personality.">
             不读取账单、不上传订单、不接 AI。你只需在“是 / 否 / 不确定”之间诚实挣扎，
             系统就会为你的消费精神状态胡说八道，但有理有据。
           </p>
         </section>
 
         <section class="panel compact">
-          <p class="panel-index">02 / 今日热搜病症</p>
-          <h2>钱包最近在偷偷搜这些</h2>
+          <p class="panel-index" data-zh="02 / 今日热搜病症" data-en="02 / TRENDING WALLET SYMPTOMS">02 / 今日热搜病症</p>
+          <h2 data-zh="钱包最近在偷偷搜这些" data-en="Your wallet has been privately searching these terms">钱包最近在偷偷搜这些</h2>
           <div class="tag-cloud">
-            <span>补贴神谕</span>
-            <span>情绪急诊</span>
-            <span>赠品绑架</span>
-            <span>平替考古</span>
+            <span data-zh="补贴神谕" data-en="Subsidy oracle">补贴神谕</span>
+            <span data-zh="情绪急诊" data-en="Mood emergency">情绪急诊</span>
+            <span data-zh="赠品绑架" data-en="Gift hostage">赠品绑架</span>
+            <span data-zh="平替考古" data-en="Dupe archaeology">平替考古</span>
+          </div>
+        </section>
+
+        <section id="method" class="content-section method-section">
+          <div class="section-heading">
+            <p class="eyebrow" data-zh="测试原理" data-en="HOW IT WORKS">测试原理</p>
+            <h2 data-zh="不是玄学，是五种消费倾向的荒诞切片" data-en="Not mysticism: five shopping tendencies in an absurd lab coat">不是玄学，是五种消费倾向的荒诞切片</h2>
+            <p data-zh="24 道判断题分别为五个维度计分。最高维度决定主导人格，第二维度形成副症状；特殊组合会触发赠品、闲置回血和平替人格。结果用于娱乐与自我观察，不是心理或医学诊断。" data-en="Twenty-four questions score five dimensions. Your highest dimension determines the core type; the second creates a secondary pattern. Special combinations unlock gift, resale and dupe types. Results are for entertainment and self-reflection, not medical or psychological diagnosis.">
+              24 道判断题分别为五个维度计分。最高维度决定主导人格，第二维度形成副症状；特殊组合会触发赠品、闲置回血和平替人格。结果用于娱乐与自我观察，不是心理或医学诊断。
+            </p>
+          </div>
+          <div class="dimension-explainer">
+            <article><b>01</b><h3 data-zh="冲动值" data-en="Impulse">冲动值</h3><p data-zh="倒计时、限量和库存提示对决策速度的影响。" data-en="How countdowns, scarcity and urgency accelerate decisions.">倒计时、限量和库存提示对决策速度的影响。</p></article>
+            <article><b>02</b><h3 data-zh="囤积欲" data-en="Stockpiling">囤积欲</h3><p data-zh="用库存换取安全感，以及对“以后会用”的信任。" data-en="Using inventory as security and trusting that future use will arrive.">用库存换取安全感，以及对“以后会用”的信任。</p></article>
+            <article><b>03</b><h3 data-zh="薅感雷达" data-en="Deal radar">薅感雷达</h3><p data-zh="对优惠规则、历史价格和平替路线的敏感程度。" data-en="Sensitivity to coupons, price history and alternative products.">对优惠规则、历史价格和平替路线的敏感程度。</p></article>
+            <article><b>04</b><h3 data-zh="情绪代偿" data-en="Mood spending">情绪代偿</h3><p data-zh="疲惫、压力和仪式感如何被翻译成购物需求。" data-en="How fatigue, stress and ritual become shopping needs.">疲惫、压力和仪式感如何被翻译成购物需求。</p></article>
+            <article><b>05</b><h3 data-zh="共犯浓度" data-en="Social influence">共犯浓度</h3><p data-zh="朋友、直播间和评论区对购买判断的放大作用。" data-en="How friends, livestreams and comments amplify purchase intent.">朋友、直播间和评论区对购买判断的放大作用。</p></article>
+          </div>
+        </section>
+
+        <section class="content-section type-library" aria-labelledby="typeLibraryTitle">
+          <div class="section-heading">
+            <p class="eyebrow" data-zh="八种钱包人格" data-en="THE EIGHT WALLET TYPES">八种钱包人格</p>
+            <h2 id="typeLibraryTitle" data-zh="每一种都很离谱，但都能找到消费依据" data-en="Every type is ridiculous, and every type has a reason">每一种都很离谱，但都能找到消费依据</h2>
+          </div>
+          <div class="type-grid">
+            <article><div class="type-art" style="--sprite-pos:0% 0%"></div><h3 data-zh="补贴神谕接收器" data-en="Subsidy Oracle Receiver">补贴神谕接收器</h3><p data-zh="把优惠理解成使命，把凑单理解成算法胜利。" data-en="Treats discounts as destiny and bundles as mathematical victories.">把优惠理解成使命，把凑单理解成算法胜利。</p></article>
+            <article><div class="type-art" style="--sprite-pos:33.333% 0%"></div><h3 data-zh="情绪止痛型买手" data-en="Emotional Painkiller Shopper">情绪止痛型买手</h3><p data-zh="不是缺东西，是今天真的需要一点安慰。" data-en="Not short of objects; simply in need of comfort today.">不是缺东西，是今天真的需要一点安慰。</p></article>
+            <article><div class="type-art" style="--sprite-pos:66.666% 0%"></div><h3 data-zh="理性离线闪购体" data-en="Rationality-Offline Flash Buyer">理性离线闪购体</h3><p data-zh="道理都懂，付款速度仍领先于思考速度。" data-en="Understands the theory; still pays faster than thinking.">道理都懂，付款速度仍领先于思考速度。</p></article>
+            <article><div class="type-art" style="--sprite-pos:100% 0%"></div><h3 data-zh="家庭库存守夜人" data-en="Domestic Inventory Night Watch">家庭库存守夜人</h3><p data-zh="柜子不是柜子，是对未来不确定性的防御系统。" data-en="A cupboard engineered as protection against uncertainty.">柜子不是柜子，是对未来不确定性的防御系统。</p></article>
+            <article><div class="type-art" style="--sprite-pos:0% 100%"></div><h3 data-zh="直播间气氛受体" data-en="Livestream Atmosphere Receptor">直播间气氛受体</h3><p data-zh="评论越热闹，商品越像拥有灵魂。" data-en="The louder the comments, the more soul a product appears to have.">评论越热闹，商品越像拥有灵魂。</p></article>
+            <article><div class="type-art" style="--sprite-pos:33.333% 100%"></div><h3 data-zh="赠品绑架型人格" data-en="Free-Gift Hostage Personality">赠品绑架型人格</h3><p data-zh="正装只是门票，限定小样才是剧情主角。" data-en="The full-size item is admission; the limited gift is the plot.">正装只是门票，限定小样才是剧情主角。</p></article>
+            <article><div class="type-art" style="--sprite-pos:66.666% 100%"></div><h3 data-zh="闲置回血幻想家" data-en="Unused-Item Recovery Visionary">闲置回血幻想家</h3><p data-zh="买前规划二手闭环，买后忘记上架按钮。" data-en="Plans a resale loop before buying, then forgets the listing button.">买前规划二手闭环，买后忘记上架按钮。</p></article>
+            <article><div class="type-art" style="--sprite-pos:100% 100%"></div><h3 data-zh="平替考古学家" data-en="Dupe Archaeologist">平替考古学家</h3><p data-zh="为了省钱，建立了一个完整的替身宇宙。" data-en="Builds an entire alternative universe in order to save money.">为了省钱，建立了一个完整的替身宇宙。</p></article>
+          </div>
+        </section>
+
+        <section id="guides" class="content-section guide-section">
+          <div class="section-heading">
+            <p class="eyebrow" data-zh="原创消费指南" data-en="ORIGINAL SHOPPING GUIDES">原创消费指南</p>
+            <h2 data-zh="测试负责让你笑，指南负责让钱包缓一缓" data-en="The test makes you laugh. The guides give your wallet a break.">测试负责让你笑，指南负责让钱包缓一缓</h2>
+          </div>
+          <div class="guide-grid">
+            <a href="./guide-impulse.html"><span>01</span><h3 data-zh="冲动购买不是意志力差：识别四种触发器" data-en="Impulse buying is not weak willpower: four triggers to notice">冲动购买不是意志力差：识别四种触发器</h3><p data-zh="从倒计时、情绪疲惫、身份想象到社交确认，找到付款前真正发生的事。" data-en="Countdowns, fatigue, identity projection and social approval: what really happens before checkout.">从倒计时、情绪疲惫、身份想象到社交确认，找到付款前真正发生的事。</p></a>
+            <a href="./guide-discounts.html"><span>02</span><h3 data-zh="为什么优惠越复杂，我们越容易多买" data-en="Why complex discounts often make us buy more">为什么优惠越复杂，我们越容易多买</h3><p data-zh="拆解满减、沉没成本和“没用券就是亏”的错觉。" data-en="How thresholds, sunk costs and unused-coupon anxiety distort value.">拆解满减、沉没成本和“没用券就是亏”的错觉。</p></a>
+            <a href="./guide-cooling-off.html"><span>03</span><h3 data-zh="一个真正能执行的十分钟冷静清单" data-en="A ten-minute cooling-off checklist you can actually use">一个真正能执行的十分钟冷静清单</h3><p data-zh="不要求彻底戒买，只把决定权从倒计时手里拿回来。" data-en="Not a shopping ban; a practical way to take decisions back from countdown timers.">不要求彻底戒买，只把决定权从倒计时手里拿回来。</p></a>
+          </div>
+        </section>
+
+        <section id="faq" class="content-section faq-section">
+          <div class="section-heading">
+            <p class="eyebrow">FAQ</p>
+            <h2 data-zh="一些钱包想问但不好意思问的问题" data-en="Questions your wallet wants to ask anonymously">一些钱包想问但不好意思问的问题</h2>
+          </div>
+          <div class="faq-list">
+            <details><summary data-zh="这是心理测试或医学诊断吗？" data-en="Is this a psychological or medical diagnosis?">这是心理测试或医学诊断吗？</summary><p data-zh="不是。本产品是基于常见消费情境制作的娱乐型自我观察工具，不替代任何专业评估或财务建议。" data-en="No. This is an entertainment and self-reflection tool based on common shopping situations. It does not replace professional assessment or financial advice.">不是。本产品是基于常见消费情境制作的娱乐型自我观察工具，不替代任何专业评估或财务建议。</p></details>
+            <details><summary data-zh="网站会读取我的账单或购物记录吗？" data-en="Does the site read my bank statements or purchase history?">网站会读取我的账单或购物记录吗？</summary><p data-zh="不会。测试只在浏览器中计算选择结果，不需要登录，也不会上传订单、账单或支付信息。" data-en="No. Answers are scored in your browser. No login, order upload, bank data or payment information is required.">不会。测试只在浏览器中计算选择结果，不需要登录，也不会上传订单、账单或支付信息。</p></details>
+            <details><summary data-zh="好友链接里包含什么？" data-en="What is included in a friend link?">好友链接里包含什么？</summary><p data-zh="链接包含生成搭档结果所需的测试类型和维度数据。请只分享给你信任的人，不要把链接当作私密存储空间。" data-en="The link contains the personality type and dimension scores needed to create a duo result. Share it only with people you trust.">链接包含生成搭档结果所需的测试类型和维度数据。请只分享给你信任的人，不要把链接当作私密存储空间。</p></details>
+            <details><summary data-zh="为什么我的结果和朋友很像？" data-en="Why is my result similar to my friend’s?">为什么我的结果和朋友很像？</summary><p data-zh="主结果由最高计分维度决定。相似的购物场景和答案可能得到同类人格，但第二维度和五维分数仍会形成差异。" data-en="The highest-scoring dimension determines the main type. Similar shopping situations can produce the same type, while secondary dimensions still differ.">主结果由最高计分维度决定。相似的购物场景和答案可能得到同类人格，但第二维度和五维分数仍会形成差异。</p></details>
+          </div>
+        </section>
+
+        <section class="content-section trust-section">
+          <div>
+            <p class="eyebrow" data-zh="关于这个项目" data-en="ABOUT THIS PROJECT">关于这个项目</p>
+            <h2 data-zh="一个认真研究“我本来只想看看”的独立项目" data-en="An independent project seriously studying “I was just looking”">一个认真研究“我本来只想看看”的独立项目</h2>
+            <p data-zh="购物病历由独立开发者制作，目标是用轻松语言帮助用户识别消费触发器。内容原创，不出售测试答案，不要求账户注册。" data-en="Shopping Bingli is an independent project using playful language to help people notice shopping triggers. Content is original, results are not sold, and no account is required.">购物病历由独立开发者制作，目标是用轻松语言帮助用户识别消费触发器。内容原创，不出售测试答案，不要求账户注册。</p>
+          </div>
+          <div class="trust-links">
+            <a href="./about.html" data-zh="关于与联系 →" data-en="About & contact →">关于与联系 →</a>
+            <a href="./privacy.html" data-zh="隐私政策 →" data-en="Privacy policy →">隐私政策 →</a>
+            <a href="./terms.html" data-zh="使用条款 →" data-en="Terms of use →">使用条款 →</a>
           </div>
         </section>
       </section>
 
       <section id="quizView" class="view" aria-labelledby="quizTitle">
         <header class="topline">
-          <button id="backHomeBtn" class="icon-button" aria-label="返回首页">‹</button>
+          <button id="backHomeBtn" class="icon-button" aria-label="返回首页" data-aria-zh="返回首页" data-aria-en="Back home">‹</button>
           <div>
-            <p class="eyebrow">症状采样中</p>
-            <h1 id="quizTitle">抽象诊室卡</h1>
+            <p class="eyebrow" data-ui="quizEyebrow">症状采样中</p>
+            <h1 id="quizTitle" data-ui="quizTitle">抽象诊室卡</h1>
           </div>
           <span id="questionCount" class="count-pill">1/24</span>
         </header>
@@ -139,17 +236,17 @@
 
       <section id="resultView" class="view" aria-labelledby="resultTitle">
         <header class="topline">
-          <button id="restartTopBtn" class="icon-button" aria-label="重新测试">‹</button>
+          <button id="restartTopBtn" class="icon-button" aria-label="重新测试" data-aria-zh="重新测试" data-aria-en="Retake test">‹</button>
           <div>
-            <p class="eyebrow">诊断完成</p>
-            <h1 id="resultTitle">你的钱包人格档案</h1>
+            <p class="eyebrow" data-ui="resultEyebrow">诊断完成</p>
+            <h1 id="resultTitle" data-ui="resultTitle">你的钱包人格档案</h1>
           </div>
           <span id="dangerPill" class="count-pill"></span>
         </header>
 
         <article id="diagnosisCard" class="diagnosis-card">
-          <div class="stamp">618 门诊</div>
-          <p class="eyebrow">抽象病历梗图报告</p>
+          <div class="stamp" data-ui="clinic">618 门诊</div>
+          <p class="eyebrow" data-ui="reportEyebrow">抽象病历梗图报告</p>
           <h2 id="diagnosisName"></h2>
           <p id="diagnosisSubtype" class="diagnosis-code"></p>
           <p id="diagnosisSubtitle" class="diagnosis-subtitle"></p>
@@ -160,33 +257,33 @@
           </figure>
 
           <div class="danger-row">
-            <span>钱包危险等级</span>
+            <span data-ui="danger">钱包危险等级</span>
             <strong id="dangerStars"></strong>
           </div>
 
           <dl class="report-list">
             <div class="wide">
-              <dt>人格切片</dt>
+              <dt data-ui="persona">人格切片</dt>
               <dd id="personaText"></dd>
             </div>
             <div class="wide">
-              <dt>精神状态</dt>
+              <dt data-ui="verdict">精神状态</dt>
               <dd id="verdictText"></dd>
             </div>
             <div>
-              <dt>钱包雷区</dt>
+              <dt data-ui="symptom">钱包雷区</dt>
               <dd id="symptomText"></dd>
             </div>
             <div>
-              <dt>高发场景</dt>
+              <dt data-ui="scene">高发场景</dt>
               <dd id="sceneText"></dd>
             </div>
             <div>
-              <dt>今日处方</dt>
+              <dt data-ui="prescription">今日处方</dt>
               <dd id="prescriptionText"></dd>
             </div>
             <div>
-              <dt>复查提醒</dt>
+              <dt data-ui="advice">复查提醒</dt>
               <dd id="adviceText"></dd>
             </div>
           </dl>
@@ -195,20 +292,20 @@
         </article>
 
         <section id="friendPanel" class="friend-panel hidden">
-          <p class="eyebrow">闺蜜钱包搭档测试</p>
+          <p class="eyebrow" data-ui="friendEyebrow">闺蜜钱包搭档测试</p>
           <h2 id="friendTitle"></h2>
           <div id="pairCardArt" class="pair-card-art" role="img" aria-label=""></div>
           <dl class="pair-report">
             <div>
-              <dt>一起逛街危险指数</dt>
+              <dt data-ui="friendRisk">一起逛街危险指数</dt>
               <dd id="friendText"></dd>
             </div>
             <div>
-              <dt>为什么会这样</dt>
+              <dt data-ui="friendWhy">为什么会这样</dt>
               <dd id="friendBasis"></dd>
             </div>
             <div>
-              <dt>相处建议</dt>
+              <dt data-ui="friendAdvice">相处建议</dt>
               <dd id="friendAdvice"></dd>
             </div>
           </dl>
@@ -217,20 +314,35 @@
         <canvas id="shareCanvas" width="1080" height="1440" aria-label="购物病历分享图"></canvas>
 
         <label class="invite-field">
-          <span>朋友挂号链接</span>
+          <span data-ui="inviteLabel">朋友挂号链接</span>
           <input id="inviteLinkField" readonly />
         </label>
 
         <div class="action-grid">
-          <button id="saveImageBtn" class="primary-button">生成分享图</button>
-          <button id="inviteBtn" class="secondary-button">让朋友也挂号</button>
-          <button id="copyInviteBtn" class="secondary-button">复制邀请链接</button>
-          <button id="restartBtn" class="ghost-button">重新测试</button>
+          <button id="saveImageBtn" class="primary-button" data-ui="shareImage">生成分享图</button>
+          <button id="inviteBtn" class="secondary-button" data-ui="inviteFriend">让朋友也挂号</button>
+          <button id="copyInviteBtn" class="secondary-button" data-ui="copyLink">复制邀请链接</button>
+          <button id="restartBtn" class="ghost-button" data-ui="restart">重新测试</button>
         </div>
       </section>
+
+      <footer class="site-footer">
+        <div>
+          <strong>购物病历 / SHOPPING BINGLI</strong>
+          <p data-zh="独立制作的娱乐型消费人格测试。不是医学、心理或财务诊断。" data-en="An independent entertainment-based shopping personality test. Not medical, psychological or financial diagnosis.">独立制作的娱乐型消费人格测试。不是医学、心理或财务诊断。</p>
+        </div>
+        <nav aria-label="页脚导航">
+          <a href="./about.html" data-zh="关于与联系" data-en="About & contact">关于与联系</a>
+          <a href="./privacy.html" data-zh="隐私政策" data-en="Privacy">隐私政策</a>
+          <a href="./terms.html" data-zh="使用条款" data-en="Terms">使用条款</a>
+          <a href="https://github.com/T0305/shopping-bingli/issues" target="_blank" rel="noreferrer" data-zh="联系与反馈" data-en="Contact & feedback">联系与反馈</a>
+        </nav>
+        <small>© 2026 Shopping Bingli</small>
+      </footer>
     </main>
 
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
-    <script src="./app.js?v=absurd-editorial-1"></script>
+    <script src="./translations.js?v=content-i18n-1"></script>
+    <script src="./app.js?v=content-i18n-1"></script>
   </body>
 </html>

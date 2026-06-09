@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bingli.200305.xyz/sitemap.xml
