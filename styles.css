@@ -229,6 +229,10 @@ html[lang="en"] .hero::after {
   border: 2px solid var(--ink);
   background-color: var(--paper);
   background-image: url("./assets/image2/shopping-diagnosis-role-cards.png");
+  background-image: image-set(
+    url("./assets/image2/shopping-diagnosis-role-cards.webp") type("image/webp"),
+    url("./assets/image2/shopping-diagnosis-role-cards.png") type("image/png")
+  );
   background-repeat: no-repeat;
   background-size: 400% 200%;
   box-shadow: 9px 10px 0 var(--ink);
@@ -494,10 +498,18 @@ html[lang="en"] .marquee-row.duo::before {
 
 .single-art {
   background-image: url("./assets/image2/shopping-diagnosis-role-cards.png");
+  background-image: image-set(
+    url("./assets/image2/shopping-diagnosis-role-cards.webp") type("image/webp"),
+    url("./assets/image2/shopping-diagnosis-role-cards.png") type("image/png")
+  );
 }
 
 .duo-art {
   background-image: url("./assets/image2/shopping-diagnosis-duo-cards.png");
+  background-image: image-set(
+    url("./assets/image2/shopping-diagnosis-duo-cards.webp") type("image/webp"),
+    url("./assets/image2/shopping-diagnosis-duo-cards.png") type("image/png")
+  );
 }
 
 .marquee-card strong,
@@ -928,6 +940,10 @@ html[lang="en"] .role-card::before {
 
 .role-card-art {
   background-image: url("./assets/image2/shopping-diagnosis-role-cards.png");
+  background-image: image-set(
+    url("./assets/image2/shopping-diagnosis-role-cards.webp") type("image/webp"),
+    url("./assets/image2/shopping-diagnosis-role-cards.png") type("image/png")
+  );
 }
 
 .danger-row {
@@ -1103,6 +1119,10 @@ html[lang="en"] .friend-panel::before {
   border: 2px solid var(--ink);
   background-color: white;
   background-image: url("./assets/image2/shopping-diagnosis-duo-cards.png");
+  background-image: image-set(
+    url("./assets/image2/shopping-diagnosis-duo-cards.webp") type("image/webp"),
+    url("./assets/image2/shopping-diagnosis-duo-cards.png") type("image/png")
+  );
   box-shadow: 8px 9px 0 var(--ink);
   transform: rotate(1deg);
 }
@@ -1737,6 +1757,10 @@ html[lang="zh-CN"] .guide-section .section-heading h2 {
   margin-bottom: 16px;
   border: 2px solid var(--ink);
   background-image: url("./assets/image2/shopping-diagnosis-role-cards.png");
+  background-image: image-set(
+    url("./assets/image2/shopping-diagnosis-role-cards.webp") type("image/webp"),
+    url("./assets/image2/shopping-diagnosis-role-cards.png") type("image/png")
+  );
   background-repeat: no-repeat;
   background-size: 400% 200%;
   background-position: var(--sprite-pos);
@@ -1749,6 +1773,18 @@ html[lang="zh-CN"] .guide-section .section-heading h2 {
 
 .type-grid article:nth-child(3n + 2) .type-art {
   transform: rotate(1deg);
+}
+
+.role-assets-fallback .deck-card,
+.role-assets-fallback .single-art,
+.role-assets-fallback .role-card-art,
+.role-assets-fallback .type-art {
+  background-image: url("./assets/image2/shopping-diagnosis-role-cards.png");
+}
+
+.role-assets-fallback .duo-art,
+.role-assets-fallback .pair-card-art {
+  background-image: url("./assets/image2/shopping-diagnosis-duo-cards.png");
 }
 
 .guide-section {
@@ -2194,5 +2230,85 @@ html[lang="zh-CN"] .guide-section .section-heading h2 {
 
   .editorial-copy {
     padding: 28px 18px;
+  }
+}
+
+@media (max-width: 779px) {
+  html[lang="en"] .site-brand small {
+    display: none;
+  }
+
+  html[lang="en"] .hero h1 {
+    max-width: 100%;
+    font-size: clamp(43px, 13.5vw, 60px);
+    line-height: 0.88;
+  }
+
+  html[lang="en"] .hero h1 em {
+    max-width: 100%;
+    padding: 4px 8px 7px;
+  }
+
+  html[lang="en"] .hero::after {
+    right: 8px;
+    top: 52px;
+    max-width: 180px;
+    padding: 6px 8px;
+    font-size: 8px;
+    line-height: 1.25;
+    text-align: center;
+  }
+
+  html[lang="en"] .deck-card strong {
+    font-size: 12px;
+    line-height: 1.08;
+  }
+
+  html[lang="en"] .role-showcase-head h2,
+  html[lang="en"] .section-heading h2,
+  html[lang="en"] .question-card h2,
+  html[lang="en"] .diagnosis-card h2,
+  html[lang="en"] .friend-panel h2,
+  html[lang="en"] .trust-section h2,
+  html[lang="en"] .editorial-hero h1 {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+  }
+
+  html[lang="en"] .marquee-row {
+    min-height: 350px;
+  }
+
+  html[lang="en"] .marquee-card {
+    width: 142px;
+  }
+
+  html[lang="en"] .marquee-copy {
+    min-height: 88px;
+  }
+
+  html[lang="en"] .marquee-card strong,
+  html[lang="en"] .marquee-card span {
+    overflow-wrap: anywhere;
+  }
+
+  html[lang="en"] .diagnosis-card h2 {
+    font-size: 34px;
+    line-height: 1;
+  }
+
+  html[lang="en"] .role-card::before {
+    right: 8px;
+    bottom: 10px;
+    max-width: calc(100% - 16px);
+    font-size: 8px;
+    line-height: 1.25;
+    text-align: center;
+  }
+
+  html[lang="en"] .friend-panel h2 {
+    font-size: 34px;
+    line-height: 1;
   }
 }

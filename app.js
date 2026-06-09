@@ -962,6 +962,30 @@ function toast(text) {
   node.timer = setTimeout(() => node.classList.remove("show"), 2200);
 }
 
+function prepareRoleAssets() {
+  const root = document.documentElement;
+  const sources = [
+    "./assets/image2/shopping-diagnosis-role-cards.webp",
+    "./assets/image2/shopping-diagnosis-duo-cards.webp"
+  ];
+  let completed = false;
+  const settle = (className) => {
+    if (completed) return;
+    completed = true;
+    root.classList.add(className);
+  };
+  const loads = sources.map((src) => new Promise((resolve, reject) => {
+    const image = new Image();
+    image.onload = resolve;
+    image.onerror = reject;
+    image.src = src;
+  }));
+  Promise.all(loads)
+    .then(() => settle("role-assets-ready"))
+    .catch(() => settle("role-assets-fallback"));
+  window.setTimeout(() => settle("role-assets-fallback"), 8000);
+}
+
 function bindEvents() {
   $("startBtn").addEventListener("click", startQuiz);
   $("backHomeBtn").addEventListener("click", () => showView("homeView"));
@@ -976,6 +1000,7 @@ function bindEvents() {
   window.addEventListener("hashchange", loadFriendFromHash);
 }
 
+prepareRoleAssets();
 bindEvents();
 applyLanguage(currentLanguage, false);
 if (!loadFriendFromHash()) {
