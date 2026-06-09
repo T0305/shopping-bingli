@@ -1,22 +1,17 @@
 :root {
   color-scheme: light;
-  --ink: #312936;
-  --ink-soft: #675768;
-  --muted: #847486;
-  --cream: #fffaf2;
-  --paper: #fff8fb;
-  --paper-strong: #fff0f6;
-  --line: rgba(120, 88, 116, 0.18);
-  --berry: #bf5272;
-  --rose: #e86b91;
-  --mist: #eee7ff;
-  --mint: #dff8ef;
-  --gold: #f4bf58;
-  --teal: #4fb9a4;
-  --blue: #7a8cf4;
-  --green: #6ec58a;
-  --violet: #8b73f8;
-  --shadow: 0 18px 44px rgba(91, 62, 85, 0.13);
+  --ink: #17151b;
+  --muted: #69616c;
+  --paper: #fffdf8;
+  --paper-2: #f5f0e8;
+  --pink: #ff5eaa;
+  --pink-soft: #ffd8e9;
+  --acid: #dfff49;
+  --cyan: #75e9e2;
+  --violet: #8f79ff;
+  --orange: #ff875b;
+  --line: rgba(23, 21, 27, 0.18);
+  --shadow: 0 18px 44px rgba(30, 22, 35, 0.12);
 }
 
 * {
@@ -25,10 +20,8 @@
 
 html {
   min-height: 100%;
-  overflow-x: clip;
-  background:
-    repeating-linear-gradient(45deg, #263142 0 10px, #f8ede2 10px 22px),
-    #f8ede2;
+  overflow-x: hidden;
+  background: #ddd7cd;
 }
 
 body {
@@ -37,47 +30,56 @@ body {
   overflow-x: hidden;
   color: var(--ink);
   font-family:
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
+    "Arial Narrow",
     "Microsoft YaHei",
+    "PingFang SC",
+    system-ui,
     sans-serif;
   background:
-    repeating-linear-gradient(90deg, rgba(31, 41, 55, 0.08) 0 1px, transparent 1px 28px),
-    repeating-linear-gradient(0deg, rgba(31, 41, 55, 0.06) 0 1px, transparent 1px 28px),
-    linear-gradient(135deg, #fff2c7 0%, #ffe6ec 42%, #dff8f2 100%);
+    linear-gradient(rgba(23, 21, 27, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23, 21, 27, 0.035) 1px, transparent 1px),
+    #eee9e0;
+  background-size: 24px 24px;
+  touch-action: pan-y;
+}
+
+button,
+input {
+  font: inherit;
 }
 
 button {
-  font: inherit;
   cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--violet);
+  outline-offset: 3px;
 }
 
 .app-shell {
   position: relative;
-  width: min(100%, 440px);
+  width: min(100%, 1180px);
   min-height: 100vh;
   margin: 0 auto;
-  padding: 18px;
-  border-inline: 3px solid #263142;
-  background:
-    linear-gradient(90deg, rgba(232, 77, 96, 0.1) 0 8px, transparent 8px 100%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 250, 242, 0.94));
-  background-size: 100% 100%;
-  box-shadow: var(--shadow);
+  padding: 14px;
+  background: var(--paper);
+  box-shadow: 0 0 70px rgba(30, 22, 35, 0.14);
 }
 
 .app-shell::before {
-  content: "SWEET WALLET TEST / 618";
+  content: "SHOPPING BINGLI®  /  UNOFFICIAL WALLET RESEARCH  /  EST. 2026";
   display: block;
-  margin: -18px -18px 14px;
-  padding: 8px 14px;
-  color: #fff;
+  margin: -14px -14px 14px;
+  padding: 10px 18px;
+  overflow: hidden;
+  color: var(--acid);
   font-size: 11px;
-  font-weight: 900;
-  background: #263142;
+  font-weight: 950;
+  white-space: nowrap;
+  background: var(--ink);
+  letter-spacing: 0;
 }
 
 .view {
@@ -88,53 +90,13 @@ button {
   display: block;
 }
 
-.hero {
-  position: relative;
-  overflow: hidden;
-  min-height: 352px;
-  padding: 28px 22px;
-  border: 3px solid #263142;
-  border-radius: 8px;
-  background:
-    linear-gradient(135deg, rgba(217, 255, 85, 0.82) 0 34%, transparent 34%),
-    linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(255, 240, 226, 0.9)),
-    repeating-linear-gradient(0deg, transparent, transparent 18px, rgba(232, 77, 96, 0.16) 18px 20px);
-  box-shadow: 10px 12px 0 rgba(31, 41, 55, 0.12);
-}
-
-.hero::before {
-  content: "先挂号 再付款";
-  position: absolute;
-  right: -28px;
-  top: 24px;
-  padding: 8px 38px;
-  border: 2px solid #263142;
-  color: #263142;
-  font-size: 12px;
-  font-weight: 900;
-  background: #fff;
-  transform: rotate(16deg);
-}
-
-.hero::after {
-  content: "钱包疑难杂症观察所";
-  position: absolute;
-  left: 18px;
-  bottom: 20px;
-  padding: 6px 10px;
-  border: 2px dashed #263142;
-  color: #9e2e3e;
-  font-size: 12px;
-  font-weight: 900;
-  background: #fff0f2;
-}
-
 .eyebrow {
-  margin: 0 0 7px;
-  color: var(--rose);
+  margin: 0 0 8px;
+  color: #b9296d;
   font-size: 12px;
-  font-weight: 900;
+  font-weight: 950;
   letter-spacing: 0;
+  text-transform: uppercase;
 }
 
 h1,
@@ -143,137 +105,215 @@ p {
   margin-top: 0;
 }
 
-h1 {
-  margin-bottom: 8px;
-  font-size: 46px;
-  line-height: 1;
+h1,
+h2 {
+  letter-spacing: 0;
 }
 
 h2 {
   margin-bottom: 10px;
-  font-size: 21px;
-  line-height: 1.18;
+  font-size: clamp(22px, 3vw, 34px);
+  line-height: 1.08;
+}
+
+.hero {
+  position: relative;
+  min-height: 550px;
+  overflow: hidden;
+  border: 2px solid var(--ink);
+  background:
+    linear-gradient(115deg, transparent 0 64%, rgba(255, 255, 255, 0.52) 64%),
+    var(--pink-soft);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  right: -90px;
+  bottom: -130px;
+  width: 400px;
+  height: 400px;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: var(--acid);
+}
+
+.hero::after {
+  content: "消费人格鉴定 / 仅供发疯参考";
+  position: absolute;
+  right: 24px;
+  top: 72px;
+  z-index: 5;
+  padding: 8px 12px;
+  border: 2px solid var(--ink);
+  font-size: 12px;
+  font-weight: 950;
+  background: var(--paper);
+  transform: rotate(6deg);
+}
+
+.hero-topline {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 14px;
+  border-bottom: 2px solid var(--ink);
+  color: var(--paper);
+  font-size: 10px;
+  font-weight: 950;
+  background: var(--ink);
+}
+
+.hero-layout {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(330px, 0.9fr);
+  min-height: 450px;
+}
+
+.hero-copy-block {
+  display: flex;
+  min-width: 0;
+  padding: clamp(34px, 6vw, 72px);
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.hero h1 {
+  margin: 0 0 18px;
+  font-size: clamp(70px, 9.2vw, 126px);
+  font-weight: 1000;
+  line-height: 0.78;
+  text-transform: uppercase;
+}
+
+.hero h1 em {
+  display: inline-block;
+  padding: 5px 12px 9px;
+  color: var(--paper);
+  font-style: normal;
+  background: var(--ink);
+  transform: rotate(-2deg);
 }
 
 .hero-copy {
-  max-width: 230px;
-  color: #263142;
-  font-size: 17px;
-  font-weight: 900;
+  max-width: 530px;
+  margin-bottom: 24px;
+  font-size: clamp(16px, 2vw, 21px);
+  font-weight: 850;
   line-height: 1.45;
 }
 
-.hero-card {
+.hero-cta {
+  width: min(100%, 330px);
+}
+
+.hero-deck {
+  position: relative;
+  min-height: 450px;
+}
+
+.deck-card {
   position: absolute;
-  right: 18px;
-  bottom: 18px;
-  width: 178px;
-  min-height: 198px;
-  padding: 18px;
-  border: 3px solid #263142;
-  border-radius: 8px;
-  background:
-    linear-gradient(180deg, #fff 0 72%, #e9fbf6 72% 100%);
-  transform: rotate(-7deg);
-  box-shadow: 9px 11px 0 rgba(232, 77, 96, 0.18);
+  width: 210px;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border: 2px solid var(--ink);
+  background-color: var(--paper);
+  background-image: url("./assets/image2/shopping-diagnosis-role-cards.png");
+  background-repeat: no-repeat;
+  background-size: 400% 200%;
+  box-shadow: 9px 10px 0 var(--ink);
 }
 
-.hero-card p {
-  margin-bottom: 8px;
-  color: var(--teal);
-  font-weight: 900;
+.deck-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent 48%, rgba(23, 21, 27, 0.9));
 }
 
-.hero-card strong {
-  display: block;
-  margin-top: 86px;
-  font-size: 30px;
+.deck-card span,
+.deck-card strong {
+  position: absolute;
+  z-index: 2;
+  left: 14px;
+  right: 14px;
+}
+
+.deck-card span {
+  top: 14px;
+  width: fit-content;
+  padding: 5px 8px;
+  border: 1px solid var(--ink);
+  font-size: 10px;
+  font-weight: 950;
+  background: var(--acid);
+}
+
+.deck-card strong {
+  bottom: 14px;
+  color: white;
+  font-size: 24px;
   line-height: 0.98;
 }
 
-.paper-slip {
-  position: absolute;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--paper-strong);
-}
-
-.slip-a {
-  right: 18px;
+.deck-card-a {
+  right: 108px;
   top: 54px;
-  width: 102px;
-  height: 22px;
+  z-index: 3;
+  background-position: 0% 0%;
+  transform: rotate(-7deg);
 }
 
-.slip-b {
-  right: 48px;
-  top: 84px;
-  width: 82px;
-  height: 22px;
+.deck-card-b {
+  right: 8px;
+  top: 90px;
+  z-index: 2;
+  background-position: 33.333% 100%;
+  transform: rotate(9deg);
 }
 
-.chart-line {
+.deck-card-c {
+  right: 126px;
+  top: 188px;
+  z-index: 4;
+  width: 178px;
+  background-position: 66.666% 0%;
+  transform: rotate(5deg);
+}
+
+.hero-stickers {
   position: absolute;
+  z-index: 8;
   left: 18px;
-  right: 18px;
-  top: 124px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--rose), var(--gold), var(--teal));
+  bottom: 16px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
-.quick-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin: 12px 0;
+.hero-stickers span {
+  padding: 7px 10px;
+  border: 2px solid var(--ink);
+  font-size: 11px;
+  font-weight: 950;
+  background: var(--paper);
+  box-shadow: 3px 3px 0 var(--ink);
 }
 
-.quick-stats div,
-.panel,
-.question-card,
-.diagnosis-card,
-.friend-panel {
-  border: 2px solid #263142;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.94);
+.hero-stickers span:nth-child(2) {
+  background: var(--cyan);
+  transform: rotate(2deg);
 }
 
-.quick-stats div {
-  min-height: 78px;
-  padding: 12px 8px;
-  text-align: center;
-  box-shadow: 5px 6px 0 rgba(31, 41, 55, 0.08);
-}
-
-.quick-stats strong {
-  display: block;
-  color: var(--blue);
-  font-size: 26px;
-  line-height: 1;
-}
-
-.quick-stats span {
-  display: block;
-  margin-top: 7px;
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 800;
-}
-
-.panel {
-  margin-top: 12px;
-  padding: 16px;
-  box-shadow: 7px 8px 0 rgba(18, 140, 126, 0.1);
-}
-
-.panel.compact {
-  padding-bottom: 14px;
-}
-
-.panel p {
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.65;
+.hero-stickers span:nth-child(3) {
+  background: var(--acid);
+  transform: rotate(-2deg);
 }
 
 .primary-button,
@@ -281,164 +321,424 @@ h2 {
 .ghost-button,
 .icon-button,
 .option-button {
-  border: 2px solid #263142;
-  border-radius: 8px;
+  border: 2px solid var(--ink);
+  border-radius: 0;
   color: var(--ink);
   background: white;
-  box-shadow: 4px 5px 0 rgba(31, 41, 55, 0.12);
+  box-shadow: 5px 6px 0 var(--ink);
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease,
+    background 150ms ease;
+}
+
+.primary-button:hover,
+.secondary-button:hover,
+.ghost-button:hover,
+.option-button:hover {
+  transform: translate(3px, 3px);
+  box-shadow: 2px 3px 0 var(--ink);
 }
 
 .primary-button {
-  width: 100%;
-  min-height: 52px;
-  border-color: #263142;
-  color: #263142;
+  display: flex;
+  min-height: 58px;
+  padding: 0 12px 0 20px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: white;
   font-size: 17px;
+  font-weight: 950;
+  background: var(--ink);
+}
+
+.primary-button b {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  color: var(--ink);
+  font-size: 24px;
+  background: var(--acid);
+}
+
+.role-showcase {
+  position: relative;
+  margin-top: 14px;
+  overflow: hidden;
+  border: 2px solid var(--ink);
+  background: var(--paper-2);
+}
+
+.role-showcase-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px;
+  border-bottom: 2px solid var(--ink);
+}
+
+.role-showcase-head h2 {
+  max-width: 680px;
+  margin-bottom: 0;
+}
+
+.role-showcase-head > span {
+  max-width: 240px;
+  font-size: 12px;
   font-weight: 900;
-  background: linear-gradient(135deg, #ffe0ec, #ffd166 52%, #ff8fb3);
+  line-height: 1.55;
+  text-align: right;
 }
 
-.secondary-button,
-.ghost-button {
-  min-height: 48px;
-  padding: 10px 12px;
+.role-marquee {
+  display: grid;
+}
+
+.marquee-row {
+  position: relative;
+  min-height: 298px;
+  overflow: hidden;
+  border-bottom: 2px solid var(--ink);
+}
+
+.marquee-row:last-child {
+  border-bottom: 0;
+}
+
+.marquee-row::before {
+  content: "SOLO / 单人嫌疑卡";
+  position: absolute;
+  z-index: 5;
+  left: 12px;
+  top: 12px;
+  padding: 6px 9px;
+  border: 2px solid var(--ink);
+  font-size: 10px;
+  font-weight: 950;
+  background: var(--pink);
+}
+
+.marquee-row.duo::before {
+  content: "DUO / 双人共犯卡";
+  background: var(--cyan);
+}
+
+.marquee-track {
+  position: absolute;
+  left: 0;
+  top: 48px;
+  display: flex;
+  width: max-content;
+  gap: 14px;
+  padding-inline: 14px;
+  animation: role-marquee 34s linear infinite;
+  will-change: transform;
+}
+
+.marquee-row.reverse .marquee-track {
+  animation-name: role-marquee-reverse;
+  animation-duration: 38s;
+}
+
+.role-showcase:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-card {
+  display: grid;
+  grid-template-columns: 142px 116px;
+  width: 286px;
+  min-height: 232px;
+  gap: 12px;
+  align-items: end;
+  padding: 10px;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  box-shadow: 5px 6px 0 var(--ink);
+}
+
+.marquee-card:nth-child(3n + 1) {
+  background: #ffe7f2;
+}
+
+.marquee-card:nth-child(3n + 2) {
+  background: #edffd0;
+}
+
+.marquee-card:nth-child(3n + 3) {
+  background: #dffbf8;
+}
+
+.marquee-art {
+  width: 142px;
+  aspect-ratio: 3 / 4;
+  border: 1px solid var(--ink);
+  background-repeat: no-repeat;
+  background-size: 400% 200%;
+  background-position: var(--sprite-pos, 0% 0%);
+}
+
+.single-art {
+  background-image: url("./assets/image2/shopping-diagnosis-role-cards.png");
+}
+
+.duo-art {
+  background-image: url("./assets/image2/shopping-diagnosis-duo-cards.png");
+}
+
+.marquee-card strong,
+.marquee-card span {
+  display: block;
+}
+
+.marquee-card strong {
+  font-size: 17px;
+  line-height: 1.02;
+}
+
+.marquee-card span {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 850;
+  line-height: 1.35;
+}
+
+.quick-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 14px;
+  border: 2px solid var(--ink);
+}
+
+.quick-stats div {
+  min-height: 120px;
+  padding: 18px;
+  border-right: 2px solid var(--ink);
+  background: var(--acid);
+}
+
+.quick-stats div:nth-child(2) {
+  background: var(--pink-soft);
+}
+
+.quick-stats div:nth-child(3) {
+  border-right: 0;
+  background: var(--cyan);
+}
+
+.quick-stats strong,
+.quick-stats span {
+  display: block;
+}
+
+.quick-stats strong {
+  font-size: clamp(34px, 5vw, 60px);
+  line-height: 1;
+}
+
+.quick-stats span {
+  margin-top: 8px;
+  font-size: 12px;
   font-weight: 900;
 }
 
-.secondary-button {
-  border-color: #263142;
-  color: #0f756c;
-  background: #e9fbf6;
+.panel {
+  position: relative;
+  margin-top: 14px;
+  padding: 24px;
+  border: 2px solid var(--ink);
+  background: white;
 }
 
-.ghost-button {
-  background: #fff;
+.panel.compact {
+  background: #f0eaff;
+}
+
+.panel-index {
+  margin-bottom: 14px;
+  font-size: 10px;
+  font-weight: 950;
+}
+
+.panel p:not(.panel-index) {
+  max-width: 760px;
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
 }
 
 .tag-cloud {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 9px;
 }
 
 .tag-cloud span {
-  padding: 8px 10px;
-  border: 2px solid #263142;
-  border-radius: 8px;
-  color: #263142;
-  font-size: 13px;
-  font-weight: 900;
-  background: #fff1cf;
-  transform: rotate(-1deg);
+  padding: 8px 11px;
+  border: 2px solid var(--ink);
+  font-size: 12px;
+  font-weight: 950;
+  background: var(--paper);
+  box-shadow: 3px 3px 0 var(--ink);
 }
 
 .tag-cloud span:nth-child(2n) {
-  color: #0f756c;
-  background: #e9fbf6;
-  transform: rotate(1deg);
+  background: var(--cyan);
+  transform: rotate(2deg);
+}
+
+.tag-cloud span:nth-child(3n) {
+  background: var(--acid);
+  transform: rotate(-2deg);
 }
 
 .topline {
+  position: sticky;
+  z-index: 10;
+  top: 0;
   display: grid;
-  grid-template-columns: 42px 1fr auto;
+  grid-template-columns: 46px 1fr auto;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 14px;
-  padding: 8px;
-  border: 2px solid #263142;
-  border-radius: 8px;
-  background: #fff;
-  box-shadow: 6px 7px 0 rgba(31, 41, 55, 0.08);
+  gap: 12px;
+  padding: 10px;
+  border: 2px solid var(--ink);
+  background: rgba(255, 253, 248, 0.94);
+  backdrop-filter: blur(12px);
+}
+
+.topline .eyebrow {
+  margin-bottom: 2px;
 }
 
 .topline h1 {
   margin: 0;
-  font-size: 28px;
+  font-size: 26px;
+  line-height: 1;
 }
 
 .icon-button {
-  width: 42px;
-  height: 42px;
-  font-size: 32px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  color: white;
+  font-size: 34px;
   line-height: 0;
+  background: var(--ink);
+  box-shadow: none;
 }
 
 .count-pill {
-  min-width: 58px;
-  padding: 9px 10px;
-  border: 2px solid #263142;
-  border-radius: 8px;
-  color: var(--rose);
-  font-size: 13px;
-  font-weight: 900;
+  min-width: 62px;
+  padding: 9px;
+  border: 2px solid var(--ink);
+  font-size: 12px;
+  font-weight: 950;
   text-align: center;
-  background: white;
+  background: var(--acid);
 }
 
 .progress-track {
-  height: 14px;
-  margin-bottom: 14px;
+  height: 16px;
+  margin: 10px 0;
   overflow: hidden;
-  border: 2px solid #263142;
-  border-radius: 999px;
+  border: 2px solid var(--ink);
   background: white;
 }
 
 .progress-fill {
-  width: 0%;
+  width: 0;
   height: 100%;
-  border-radius: inherit;
-  background: linear-gradient(90deg, var(--teal), var(--gold), var(--rose));
+  background:
+    repeating-linear-gradient(135deg, transparent 0 8px, rgba(23, 21, 27, 0.18) 8px 10px),
+    var(--pink);
   transition: width 180ms ease;
 }
 
 .question-card {
-  min-height: 520px;
-  padding: 18px;
+  position: relative;
+  min-height: 560px;
+  padding: clamp(24px, 5vw, 54px);
+  overflow: hidden;
+  border: 2px solid var(--ink);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(255, 247, 235, 0.94)),
-    repeating-linear-gradient(-4deg, transparent 0 19px, rgba(114, 87, 255, 0.09) 19px 21px);
-  box-shadow: 9px 10px 0 rgba(114, 87, 255, 0.12);
+    linear-gradient(90deg, transparent 49%, rgba(23, 21, 27, 0.05) 50%, transparent 51%),
+    var(--paper-2);
+}
+
+.question-card::after {
+  content: "此处禁止假装理性";
+  position: absolute;
+  right: -24px;
+  top: 44px;
+  padding: 7px 32px;
+  border-block: 2px solid var(--ink);
+  font-size: 10px;
+  font-weight: 950;
+  background: var(--acid);
+  transform: rotate(9deg);
 }
 
 .question-kicker {
   display: inline-block;
-  margin-bottom: 10px;
-  padding: 5px 9px;
-  border: 2px solid #263142;
-  border-radius: 8px;
-  color: var(--teal);
-  font-size: 13px;
-  font-weight: 900;
-  background: #e9fbf6;
+  margin-bottom: 22px;
+  padding: 7px 10px;
+  border: 2px solid var(--ink);
+  font-size: 11px;
+  font-weight: 950;
+  background: var(--cyan);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.question-card h2 {
+  max-width: 760px;
+  margin-bottom: 42px;
+  font-size: clamp(28px, 4.5vw, 48px);
+  line-height: 1.13;
 }
 
 .option-list {
   display: grid;
-  gap: 10px;
-  margin-top: 18px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
 }
 
 .option-button {
-  width: 100%;
-  min-height: 74px;
-  padding: 12px;
+  position: relative;
+  display: grid;
+  min-height: 170px;
+  padding: 18px;
+  align-content: start;
   text-align: left;
-  background:
-    linear-gradient(90deg, #fff 0 72%, #fff0f2 72% 100%);
-  transition:
-    transform 160ms ease,
-    border-color 160ms ease,
-    box-shadow 160ms ease;
+  background: white;
 }
 
-.option-button:hover,
-.option-button:focus-visible {
-  border-color: #263142;
-  box-shadow:
-    6px 7px 0 rgba(232, 77, 96, 0.18),
-    inset 7px 0 0 var(--rose);
-  transform: translateY(-1px);
+.option-button:nth-child(1) {
+  background: var(--pink-soft);
+}
+
+.option-button:nth-child(2) {
+  background: var(--cyan);
+}
+
+.option-button:nth-child(3) {
+  background: #e7e0ff;
+}
+
+.option-button b {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 20px;
+  place-items: center;
+  color: white;
+  font-size: 22px;
+  font-style: normal;
+  background: var(--ink);
 }
 
 .option-button strong,
@@ -447,220 +747,235 @@ h2 {
 }
 
 .option-button strong {
-  font-size: 15px;
-  line-height: 1.35;
+  font-size: 20px;
 }
 
 .option-button span {
-  margin-top: 4px;
+  margin-top: 8px;
   color: var(--muted);
   font-size: 12px;
-  line-height: 1.35;
+  line-height: 1.4;
+}
+
+#quizView.active,
+#resultView.active {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.diagnosis-card,
+.friend-panel {
+  position: relative;
+  margin-top: 10px;
+  overflow: hidden;
+  border: 2px solid var(--ink);
+  background: var(--paper-2);
 }
 
 .diagnosis-card {
-  position: relative;
-  overflow: hidden;
-  padding: 20px 18px 18px;
-  border: 2px solid #263142;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 247, 235, 0.92)),
-    repeating-linear-gradient(-6deg, transparent 0 18px, rgba(240, 167, 50, 0.08) 18px 19px);
-  box-shadow:
-    9px 10px 0 rgba(31, 41, 55, 0.09),
-    inset 0 0 0 5px rgba(255, 255, 255, 0.72);
+  display: grid;
+  grid-template-columns: minmax(280px, 0.85fr) minmax(320px, 1.15fr);
+  gap: 0 26px;
+  padding: 28px;
 }
 
 .diagnosis-card::before {
-  content: "";
+  content: "CONFIDENTIAL? NOT REALLY.";
   position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(90deg, transparent 0 28px, rgba(232, 77, 96, 0.07) 28px 29px, transparent 29px),
-    linear-gradient(180deg, transparent 0 30px, rgba(18, 140, 126, 0.08) 30px 31px, transparent 31px);
-  background-size: 30px 32px;
-}
-
-.diagnosis-card::after {
-  content: "钱包异常观察样本";
-  position: absolute;
-  z-index: 0;
-  right: -34px;
-  bottom: 172px;
-  padding: 8px 42px;
-  border: 2px dashed rgba(18, 140, 126, 0.72);
-  color: rgba(18, 140, 126, 0.86);
-  font-size: 12px;
-  font-weight: 900;
-  background: rgba(238, 250, 247, 0.88);
-  transform: rotate(-9deg);
-  pointer-events: none;
-}
-
-.diagnosis-card > * {
-  position: relative;
+  right: -38px;
+  top: 72px;
   z-index: 1;
+  padding: 8px 52px;
+  border-block: 2px solid var(--ink);
+  font-size: 10px;
+  font-weight: 950;
+  background: var(--acid);
+  transform: rotate(11deg);
+}
+
+.diagnosis-card > .eyebrow,
+.diagnosis-card > h2,
+.diagnosis-card > .diagnosis-code,
+.diagnosis-card > .diagnosis-subtitle,
+.diagnosis-card > .result-tags,
+.diagnosis-card > .role-card {
+  grid-column: 1;
+}
+
+.diagnosis-card > .danger-row,
+.diagnosis-card > .report-list,
+.diagnosis-card > .dimension-grid {
+  grid-column: 2;
 }
 
 .stamp {
   position: absolute;
-  right: 12px;
-  top: 12px;
-  display: grid;
-  width: 84px;
-  height: 84px;
-  place-items: center;
-  border: 4px double rgba(232, 77, 96, 0.78);
-  border-radius: 50%;
-  color: rgba(232, 77, 96, 0.86);
-  font-size: 13px;
-  font-weight: 900;
-  line-height: 1.15;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.68);
-  transform: rotate(14deg);
+  right: 24px;
+  top: 18px;
+  z-index: 2;
+  padding: 7px 10px;
+  border: 2px solid var(--ink);
+  color: white;
+  font-size: 11px;
+  font-weight: 950;
+  background: var(--pink);
+  transform: rotate(5deg);
 }
 
 .diagnosis-card h2 {
-  max-width: 250px;
-  margin-bottom: 8px;
-  font-size: 32px;
-  line-height: 1.05;
+  max-width: 440px;
+  margin: 0 0 10px;
+  font-size: clamp(38px, 5vw, 62px);
+  line-height: 0.9;
 }
 
 .diagnosis-code {
-  display: inline-block;
-  max-width: min(100%, 286px);
-  margin-bottom: 10px;
-  padding: 6px 10px;
-  border: 1px dashed rgba(18, 140, 126, 0.48);
-  border-radius: 8px;
-  color: #0f756c;
-  font-size: 13px;
-  font-weight: 900;
-  background: rgba(233, 251, 246, 0.92);
+  width: fit-content;
+  margin-bottom: 12px;
+  padding: 7px 10px;
+  border: 2px solid var(--ink);
+  font-size: 12px;
+  font-weight: 950;
+  background: var(--cyan);
 }
 
 .diagnosis-subtitle {
-  max-width: 280px;
+  max-width: 460px;
   color: var(--muted);
+  font-size: 15px;
   font-weight: 800;
   line-height: 1.5;
 }
 
-.role-card {
-  position: relative;
-  z-index: 2;
-  margin: 18px 8px 0;
-  overflow: visible;
-  border: 2px solid #263142;
-  border-radius: 8px;
-  background: #fff7eb;
-  box-shadow: 7px 8px 0 rgba(232, 77, 96, 0.12);
-  transform: rotate(-1.2deg);
+.result-tags {
+  display: flex;
+  margin: 4px 0 14px;
+  flex-wrap: wrap;
+  gap: 7px;
 }
 
-.role-card::before,
-.role-card::after {
-  content: "";
-  position: absolute;
-  z-index: 2;
-  width: 62px;
-  height: 20px;
-  border: 1px solid rgba(240, 167, 50, 0.46);
-  background: rgba(255, 232, 170, 0.72);
+.result-tags span {
+  padding: 6px 8px;
+  border: 1px solid var(--ink);
+  font-size: 10px;
+  font-weight: 900;
+  background: white;
+}
+
+.result-tags span:nth-child(2) {
+  background: var(--pink-soft);
+}
+
+.result-tags span:nth-child(3) {
+  background: var(--acid);
+}
+
+.role-card {
+  position: relative;
+  width: min(100%, 390px);
+  margin: 8px 0 0;
+  border: 2px solid var(--ink);
+  background: white;
+  box-shadow: 8px 9px 0 var(--ink);
+  transform: rotate(-1.5deg);
 }
 
 .role-card::before {
-  left: 18px;
-  top: -12px;
-  transform: rotate(-8deg);
+  content: "本人已读并继续付款";
+  position: absolute;
+  z-index: 2;
+  right: -14px;
+  bottom: 18px;
+  padding: 7px 9px;
+  border: 2px solid var(--ink);
+  font-size: 10px;
+  font-weight: 950;
+  background: var(--acid);
+  transform: rotate(-5deg);
 }
 
-.role-card::after {
-  right: 24px;
-  bottom: -12px;
-  transform: rotate(7deg);
+.role-card-art,
+.pair-card-art {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background-repeat: no-repeat;
+  background-size: 400% 200%;
 }
 
 .role-card-art {
-  width: 100%;
-  aspect-ratio: 4 / 3;
   background-image: url("./assets/image2/shopping-diagnosis-role-cards.png");
-  background-repeat: no-repeat;
-  background-size: 400% 200%;
-  background-position: 0% 0%;
 }
 
 .danger-row {
   display: flex;
-  justify-content: space-between;
-  gap: 10px;
+  min-height: 70px;
+  margin-bottom: 14px;
+  padding: 14px;
   align-items: center;
-  margin: 20px 0 14px;
-  padding: 12px 14px;
-  border: 2px dashed #e3baa5;
-  border-radius: 8px;
-  background:
-    linear-gradient(90deg, rgba(255, 247, 235, 0.94), rgba(238, 250, 247, 0.9));
+  justify-content: space-between;
+  gap: 12px;
+  border: 2px solid var(--ink);
+  background: var(--pink-soft);
 }
 
 .danger-row span {
-  color: #8a4e12;
-  font-size: 13px;
-  font-weight: 900;
+  font-size: 12px;
+  font-weight: 950;
 }
 
 .danger-row strong {
-  color: var(--rose);
-  font-size: 18px;
+  color: #cf236f;
+  font-size: 20px;
 }
 
-.report-list {
+.report-list,
+.pair-report {
   display: grid;
   gap: 10px;
   margin: 0;
 }
 
-.report-list div {
-  position: relative;
-  padding: 14px 12px 12px;
-  border: 1px dashed rgba(38, 49, 66, 0.24);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.78);
+.report-list {
+  grid-template-columns: 1fr 1fr;
 }
 
-.report-list dt {
-  display: inline-block;
-  margin-bottom: 7px;
-  padding: 3px 8px;
-  border-radius: 999px;
-  color: #0f756c;
-  font-size: 12px;
-  font-weight: 900;
-  background: #e9fbf6;
+.report-list .wide {
+  grid-column: 1 / -1;
 }
 
-.report-list dd {
+.report-list div,
+.pair-report div {
+  padding: 14px;
+  border: 2px solid var(--ink);
+  background: white;
+}
+
+.report-list div:nth-child(2n),
+.pair-report div:nth-child(2n) {
+  background: #e9ffd1;
+}
+
+.report-list div:nth-child(3n),
+.pair-report div:nth-child(3n) {
+  background: #e1fafa;
+}
+
+.report-list dt,
+.pair-report dt {
+  width: fit-content;
+  margin-bottom: 8px;
+  padding: 4px 7px;
+  color: white;
+  font-size: 10px;
+  font-weight: 950;
+  background: var(--ink);
+}
+
+.report-list dd,
+.pair-report dd {
   margin: 0;
-  font-size: 14px;
-  line-height: 1.52;
-}
-
-.report-list .wide dd {
-  font-size: 14px;
-  line-height: 1.68;
-}
-
-.report-list div:nth-child(2n) dt {
-  color: #9e2e3e;
-  background: #fff0f2;
-}
-
-.report-list div:nth-child(3n) dt {
-  color: #8a4e12;
-  background: #fff1cf;
+  font-size: 13px;
+  line-height: 1.62;
 }
 
 .dimension-grid {
@@ -672,29 +987,38 @@ h2 {
 
 .dimension-item {
   position: relative;
+  display: grid;
+  min-height: 82px;
   overflow: hidden;
-  min-width: 0;
-  padding: 8px 4px;
-  border-radius: 8px;
-  color: white;
+  place-items: center;
+  padding: 7px 3px;
+  border: 2px solid var(--ink);
   text-align: center;
-  background: var(--blue);
+  background: white;
 }
 
-.dimension-item:nth-child(2) {
-  background: var(--green);
+.dimension-item::before {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: var(--score);
+  background: var(--pink-soft);
 }
 
-.dimension-item:nth-child(3) {
-  background: var(--teal);
+.dimension-item:nth-child(2)::before {
+  background: var(--acid);
 }
 
-.dimension-item:nth-child(4) {
-  background: var(--rose);
+.dimension-item:nth-child(3)::before {
+  background: var(--cyan);
 }
 
-.dimension-item:nth-child(5) {
-  background: var(--gold);
+.dimension-item:nth-child(4)::before {
+  background: #e1d9ff;
+}
+
+.dimension-item:nth-child(5)::before {
+  background: #ffd7c7;
 }
 
 .dimension-item strong,
@@ -704,168 +1028,132 @@ h2 {
   display: block;
 }
 
-.dimension-item i {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: block;
-  background: rgba(255, 255, 255, 0.22);
-}
-
 .dimension-item strong {
-  font-size: 17px;
+  font-size: 18px;
 }
 
 .dimension-item span {
-  margin-top: 2px;
-  font-size: 11px;
-  font-weight: 800;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.dimension-item i {
+  display: none;
 }
 
 .friend-panel {
-  position: relative;
-  overflow: hidden;
-  margin-top: 12px;
-  padding: 18px;
-  border: 2px solid #0f756c;
-  background:
-    linear-gradient(135deg, rgba(238, 250, 247, 0.92), rgba(255, 247, 235, 0.9)),
-    repeating-linear-gradient(90deg, transparent 0 18px, rgba(18, 140, 126, 0.07) 18px 19px);
-  box-shadow: 8px 9px 0 rgba(18, 140, 126, 0.1);
-}
-
-.friend-panel::before {
-  content: "搭档禁忌实验";
-  position: absolute;
-  z-index: 0;
-  right: -28px;
-  top: 22px;
-  padding: 7px 34px;
-  border: 2px solid rgba(232, 77, 96, 0.68);
-  color: rgba(232, 77, 96, 0.86);
-  font-size: 12px;
-  font-weight: 900;
-  background: rgba(255, 255, 255, 0.72);
-  transform: rotate(16deg);
+  padding: 28px;
+  background: #e1fafa;
 }
 
 .friend-panel.hidden {
   display: none;
 }
 
-.friend-panel > * {
-  position: relative;
-  z-index: 1;
+.friend-panel::before {
+  content: "共同付款危险实验";
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  padding: 7px 10px;
+  border: 2px solid var(--ink);
+  font-size: 10px;
+  font-weight: 950;
+  background: var(--acid);
+  transform: rotate(4deg);
 }
 
 .friend-panel h2 {
-  max-width: 280px;
-  margin-bottom: 10px;
-  font-size: 27px;
-  line-height: 1.08;
+  max-width: 640px;
+  font-size: clamp(34px, 5vw, 60px);
+  line-height: 0.94;
 }
 
 .pair-card-art {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  margin: 16px 0;
-  border: 2px solid #263142;
-  border-radius: 8px;
-  background-color: #f8fffd;
+  max-width: 520px;
+  margin: 20px auto;
+  border: 2px solid var(--ink);
+  background-color: white;
   background-image: url("./assets/image2/shopping-diagnosis-duo-cards.png");
-  background-repeat: no-repeat;
-  background-size: 400% 200%;
-  background-position: 0% 0%;
-  box-shadow: 7px 8px 0 rgba(31, 41, 55, 0.08);
+  box-shadow: 8px 9px 0 var(--ink);
   transform: rotate(1deg);
 }
 
 .pair-report {
-  display: grid;
-  gap: 10px;
-  margin: 0;
-}
-
-.pair-report div {
-  padding: 13px 12px;
-  border: 1px dashed rgba(15, 117, 108, 0.34);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.78);
-}
-
-.pair-report dt {
-  display: inline-block;
-  margin-bottom: 6px;
-  padding: 3px 8px;
-  border-radius: 999px;
-  color: #0f756c;
-  font-size: 12px;
-  font-weight: 900;
-  background: #e9fbf6;
-}
-
-.pair-report dd {
-  margin: 0;
-  color: var(--ink);
-  font-size: 14px;
-  line-height: 1.58;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 #shareCanvas {
   display: none;
-  width: 100%;
+  width: min(100%, 600px);
   aspect-ratio: 3 / 4;
-  margin-top: 12px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
+  margin: 14px auto 0;
+  border: 2px solid var(--ink);
   background: white;
+  box-shadow: 8px 9px 0 var(--ink);
 }
 
 #shareCanvas.ready {
   display: block;
 }
 
-.action-grid {
-  display: grid;
-  gap: 9px;
-  margin-top: 12px;
-}
-
 .invite-field {
   display: grid;
   gap: 7px;
-  margin-top: 12px;
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 900;
+  margin-top: 14px;
+  font-size: 11px;
+  font-weight: 950;
 }
 
 .invite-field input {
   width: 100%;
-  min-height: 44px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 0 10px;
+  min-height: 48px;
+  padding: 0 12px;
+  border: 2px solid var(--ink);
   color: var(--ink);
-  font: inherit;
   background: white;
+}
+
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.action-grid .primary-button {
+  width: 100%;
+}
+
+.secondary-button,
+.ghost-button {
+  min-height: 52px;
+  padding: 10px 14px;
+  font-weight: 950;
+}
+
+.secondary-button {
+  background: var(--cyan);
+}
+
+.ghost-button {
+  background: var(--paper-2);
 }
 
 .toast {
   position: fixed;
   left: 50%;
   bottom: 18px;
-  z-index: 20;
+  z-index: 30;
   width: min(360px, calc(100% - 32px));
-  padding: 12px 14px;
-  border-radius: 8px;
+  padding: 13px 16px;
+  border: 2px solid var(--ink);
   color: white;
-  font-size: 14px;
-  font-weight: 900;
+  font-size: 13px;
+  font-weight: 950;
   text-align: center;
-  background: rgba(31, 41, 55, 0.92);
+  background: var(--ink);
+  box-shadow: 5px 6px 0 var(--pink);
   opacity: 0;
   transform: translate(-50%, 18px);
   transition: 160ms ease;
@@ -877,704 +1165,19 @@ h2 {
   transform: translate(-50%, 0);
 }
 
-/* Sweet-cool personality-test skin */
-html {
-  background:
-    radial-gradient(circle at 12% 10%, rgba(232, 107, 145, 0.24), transparent 28%),
-    radial-gradient(circle at 86% 18%, rgba(139, 115, 248, 0.18), transparent 24%),
-    linear-gradient(135deg, #fff1f7 0%, #f6efff 48%, #e9fff7 100%);
-}
-
-body {
-  background:
-    radial-gradient(circle at 18% 6%, rgba(255, 255, 255, 0.85) 0 5px, transparent 6px),
-    radial-gradient(circle at 82% 30%, rgba(255, 255, 255, 0.7) 0 4px, transparent 5px),
-    repeating-linear-gradient(90deg, rgba(191, 82, 114, 0.045) 0 1px, transparent 1px 32px),
-    linear-gradient(160deg, #fff3f7 0%, #f5efff 50%, #eafff8 100%);
-}
-
-.app-shell {
-  width: min(100%, 448px);
-  padding: 16px;
-  border: 0;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(255, 250, 242, 0.76)),
-    radial-gradient(circle at 100% 0%, rgba(232, 107, 145, 0.16), transparent 30%);
-  box-shadow: 0 20px 60px rgba(91, 62, 85, 0.16);
-}
-
-.app-shell::before {
-  margin: -16px -16px 14px;
-  padding: 10px 15px;
-  color: #7f4b64;
-  font-size: 10px;
-  background: rgba(255, 255, 255, 0.68);
-  border-bottom: 1px solid rgba(191, 82, 114, 0.16);
-  backdrop-filter: blur(14px);
-}
-
-.hero,
-.panel,
-.question-card,
-.diagnosis-card,
-.friend-panel,
-.topline,
-.quick-stats div {
-  border: 1px solid rgba(120, 88, 116, 0.16);
-  border-radius: 24px;
-  box-shadow: 0 18px 44px rgba(91, 62, 85, 0.12);
-}
-
-.hero {
-  min-height: 430px;
-  padding: 30px 22px 24px;
-  background:
-    radial-gradient(circle at 80% 16%, rgba(255, 255, 255, 0.92) 0 50px, transparent 52px),
-    radial-gradient(circle at 18% 75%, rgba(223, 248, 239, 0.92), transparent 34%),
-    linear-gradient(135deg, #ffe3ef 0%, #f2eaff 54%, #e8fff8 100%);
-  overflow: hidden;
-}
-
-.hero::before {
-  content: "NO.618 / SWEET TEST";
-  right: 16px;
-  top: 18px;
-  padding: 7px 12px;
-  border: 1px solid rgba(191, 82, 114, 0.22);
-  border-radius: 999px;
-  color: #bf5272;
-  font-size: 11px;
-  background: rgba(255, 255, 255, 0.62);
-  transform: rotate(6deg);
-  backdrop-filter: blur(10px);
-}
-
-.hero::after {
-  content: "不是乱买 / 是人格发言";
-  left: 22px;
-  bottom: 20px;
-  border: 1px dashed rgba(191, 82, 114, 0.28);
-  border-radius: 999px;
-  color: #7f4b64;
-  background: rgba(255, 255, 255, 0.68);
-}
-
-.hero-stickers {
-  position: absolute;
-  inset: auto 16px 108px 16px;
-  z-index: 2;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  pointer-events: none;
-}
-
-.hero-stickers span {
-  padding: 7px 10px;
-  border: 1px solid rgba(120, 88, 116, 0.16);
-  border-radius: 999px;
-  color: #7f4b64;
-  font-size: 11px;
-  font-weight: 900;
-  background: rgba(255, 255, 255, 0.72);
-  box-shadow: 0 8px 20px rgba(91, 62, 85, 0.08);
-  transform: rotate(-3deg);
-}
-
-.hero-stickers span:nth-child(2) {
-  color: #4c8c82;
-  background: rgba(223, 248, 239, 0.82);
-  transform: rotate(2deg);
-}
-
-.hero-stickers span:nth-child(3) {
-  color: #7661cb;
-  background: rgba(238, 231, 255, 0.82);
-  transform: rotate(-1deg);
-}
-
-.eyebrow {
-  color: var(--berry);
-  font-size: 12px;
-}
-
-h1 {
-  max-width: 300px;
-  font-size: 42px;
-  line-height: 1.02;
-  letter-spacing: 0;
-}
-
-.hero-copy {
-  max-width: 235px;
-  color: #5d4b60;
-  font-size: 16px;
-}
-
-.hero-card {
-  right: 24px;
-  bottom: 122px;
-  width: 164px;
-  min-height: 196px;
-  border: 1px solid rgba(120, 88, 116, 0.2);
-  border-radius: 28px;
-  background:
-    radial-gradient(circle at 50% 34%, #ffe0ec 0 42px, transparent 43px),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(248, 239, 255, 0.9));
-  box-shadow: 0 22px 38px rgba(191, 82, 114, 0.2);
-  transform: rotate(-5deg);
-}
-
-.hero-card::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 38px;
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #bf5272, #8b73f8);
-  transform: translateX(-50%);
-}
-
-.hero-card::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 94px;
-  width: 84px;
-  height: 54px;
-  border-radius: 30px 30px 18px 18px;
-  background: #fff4da;
-  transform: translateX(-50%);
-}
-
-.hero-card p {
-  color: #bf5272;
-}
-
-.hero-card strong {
-  position: relative;
-  z-index: 2;
-  margin-top: 106px;
-  color: #49384f;
-  font-size: 25px;
-}
-
-.paper-slip,
-.chart-line {
-  display: none;
-}
-
-.quick-stats {
-  gap: 9px;
-}
-
-.quick-stats div {
-  min-height: 76px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.72);
-}
-
-.quick-stats strong {
-  color: #bf5272;
-  font-size: 21px;
-  white-space: nowrap;
-}
-
-.quick-stats span {
-  color: #7a667a;
-}
-
-.panel {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-}
-
-.primary-button,
-.secondary-button,
-.ghost-button,
-.icon-button,
-.option-button {
-  border: 0;
-  border-radius: 999px;
-  box-shadow: 0 14px 28px rgba(91, 62, 85, 0.12);
-}
-
-.primary-button {
-  color: #fff;
-  background: linear-gradient(135deg, #bf5272, #8b73f8);
-}
-
-.secondary-button {
-  color: #6f4da8;
-  background: #f2ebff;
-}
-
-.ghost-button {
-  color: #7f4b64;
-  background: #fff0f6;
-}
-
-.tag-cloud span {
-  border: 0;
-  border-radius: 999px;
-  color: #7f4b64;
-  background: #fff0f6;
-}
-
-.tag-cloud span:nth-child(2n) {
-  color: #4c8c82;
-  background: #e7fbf4;
-}
-
-.topline {
-  padding: 10px;
-  background: rgba(255, 255, 255, 0.74);
-  backdrop-filter: blur(12px);
-}
-
-.topline h1 {
-  max-width: none;
-  font-size: 24px;
-}
-
-.count-pill {
-  border: 0;
-  color: #bf5272;
-  background: #fff0f6;
-}
-
-.progress-track {
-  height: 12px;
-  border: 0;
-  background: rgba(255, 255, 255, 0.62);
-  box-shadow: inset 0 0 0 1px rgba(120, 88, 116, 0.1);
-}
-
-.progress-fill {
-  background: linear-gradient(90deg, #e86b91, #8b73f8, #4fb9a4);
-}
-
-.question-card {
-  min-height: 520px;
-  padding: 18px;
-  background:
-    radial-gradient(circle at 88% 12%, rgba(255, 255, 255, 0.78) 0 48px, transparent 50px),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 243, 247, 0.72));
-}
-
-.question-kicker {
-  border: 0;
-  border-radius: 999px;
-  color: #bf5272;
-  background: #fff0f6;
-}
-
-.question-card h2 {
-  margin-top: 10px;
-  color: #312936;
-  font-size: 26px;
-  line-height: 1.25;
-}
-
-.option-list {
-  gap: 12px;
-}
-
-.option-button {
-  position: relative;
-  display: grid;
-  grid-template-columns: 42px 1fr;
-  min-height: 82px;
-  padding: 14px 16px 14px 12px;
-  text-align: left;
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 240, 246, 0.88));
-}
-
-.option-button:nth-child(2) {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(232, 255, 248, 0.88));
-}
-
-.option-button:nth-child(3) {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(243, 237, 255, 0.88));
-}
-
-.option-button b {
-  display: grid;
-  grid-row: span 2;
-  width: 34px;
-  height: 34px;
-  place-items: center;
-  border-radius: 50%;
-  color: #fff;
-  font-size: 18px;
-  font-style: normal;
-  background: #bf5272;
-}
-
-.option-button:nth-child(2) b {
-  background: #4fb9a4;
-}
-
-.option-button:nth-child(3) b {
-  background: #8b73f8;
-}
-
-.option-button:hover,
-.option-button:focus-visible {
-  box-shadow: 0 16px 30px rgba(191, 82, 114, 0.16);
-  transform: translateY(-2px);
-}
-
-.diagnosis-card {
-  padding: 22px 18px 18px;
-  border: 1px solid rgba(120, 88, 116, 0.16);
-  background:
-    radial-gradient(circle at 84% 10%, rgba(255, 255, 255, 0.78) 0 46px, transparent 48px),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 244, 249, 0.76));
-  box-shadow: 0 18px 44px rgba(91, 62, 85, 0.12);
-}
-
-.diagnosis-card::before {
-  background:
-    radial-gradient(circle at 12% 26%, rgba(223, 248, 239, 0.65), transparent 28%),
-    radial-gradient(circle at 90% 58%, rgba(238, 231, 255, 0.72), transparent 30%);
-  background-size: auto;
-}
-
-.diagnosis-card::after {
-  content: "消费精神状态档案";
-  right: 14px;
-  bottom: auto;
-  top: 110px;
-  border: 0;
-  border-radius: 999px;
-  color: #6f4da8;
-  background: rgba(238, 231, 255, 0.78);
-  transform: rotate(7deg);
-}
-
-.stamp {
-  width: auto;
-  height: auto;
-  padding: 7px 11px;
-  border: 0;
-  border-radius: 999px;
-  color: #bf5272;
-  font-size: 11px;
-  background: #fff0f6;
-  transform: rotate(5deg);
-}
-
-.diagnosis-card h2 {
-  max-width: 275px;
-  color: #312936;
-  font-size: 34px;
-}
-
-.diagnosis-code {
-  border: 0;
-  border-radius: 999px;
-  color: #6f4da8;
-  background: #f2ebff;
-}
-
-.diagnosis-subtitle {
-  max-width: 300px;
-  color: #6f596c;
-}
-
-.result-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 12px 0 16px;
-}
-
-.result-tags span {
-  padding: 7px 10px;
-  border-radius: 999px;
-  color: #7f4b64;
-  font-size: 12px;
-  font-weight: 900;
-  background: rgba(255, 240, 246, 0.82);
-}
-
-.result-tags span:nth-child(2) {
-  color: #4c8c82;
-  background: rgba(223, 248, 239, 0.82);
-}
-
-.result-tags span:nth-child(3) {
-  color: #6f4da8;
-  background: rgba(238, 231, 255, 0.82);
-}
-
-.role-card {
-  margin: 16px 4px 0;
-  border: 0;
-  border-radius: 28px;
-  background: rgba(255, 255, 255, 0.72);
-  box-shadow: 0 20px 40px rgba(191, 82, 114, 0.18);
-  transform: rotate(-1deg);
-}
-
-.role-card-art {
-  border-radius: 28px;
-}
-
-.danger-row {
-  border: 0;
-  border-radius: 20px;
-  background: rgba(255, 240, 246, 0.76);
-}
-
-.danger-row span {
-  color: #7f4b64;
-}
-
-.report-list div,
-.pair-report div {
-  border: 0;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.72);
-  box-shadow: inset 0 0 0 1px rgba(120, 88, 116, 0.08);
-}
-
-.report-list dt,
-.pair-report dt {
-  border-radius: 999px;
-  color: #bf5272;
-  background: #fff0f6;
-}
-
-.report-list div:nth-child(2n) dt {
-  color: #6f4da8;
-  background: #f2ebff;
-}
-
-.report-list div:nth-child(3n) dt {
-  color: #4c8c82;
-  background: #e7fbf4;
-}
-
-.dimension-grid {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 8px;
-}
-
-.dimension-item {
-  display: grid;
-  min-height: 78px;
-  place-items: center;
-  padding: 8px 3px;
-  border-radius: 18px;
-  color: #49384f;
-  background:
-    conic-gradient(from 180deg, rgba(191, 82, 114, 0.28) var(--score), rgba(255, 255, 255, 0.64) 0),
-    #fff;
-}
-
-.dimension-item i {
-  display: none;
-}
-
-.dimension-item strong {
-  font-size: 18px;
-}
-
-.dimension-item span {
-  color: #6f596c;
-}
-
-.friend-panel {
-  border: 1px solid rgba(120, 88, 116, 0.16);
-  background:
-    radial-gradient(circle at 86% 12%, rgba(255, 255, 255, 0.8) 0 48px, transparent 50px),
-    linear-gradient(135deg, rgba(255, 240, 246, 0.84), rgba(238, 231, 255, 0.72), rgba(223, 248, 239, 0.72));
-}
-
-.friend-panel::before {
-  content: "闺蜜钱包关系卡";
-  border: 0;
-  border-radius: 999px;
-  color: #bf5272;
-  background: rgba(255, 255, 255, 0.68);
-}
-
-.friend-panel h2 {
-  max-width: 292px;
-  color: #312936;
-}
-
-.pair-card-art {
-  border: 0;
-  border-radius: 28px;
-  box-shadow: 0 20px 40px rgba(91, 62, 85, 0.13);
-}
-
-#shareCanvas {
-  border: 0;
-  border-radius: 24px;
-  box-shadow: 0 18px 44px rgba(91, 62, 85, 0.12);
-}
-
-.invite-field input {
-  border: 0;
-  border-radius: 18px;
-  color: #49384f;
-  background: rgba(255, 255, 255, 0.72);
-}
-
-.role-showcase {
-  position: relative;
-  overflow: hidden;
-  margin: 12px 0;
-  padding: 16px 0 18px;
-  border: 1px solid rgba(120, 88, 116, 0.16);
-  border-radius: 24px;
-  background:
-    radial-gradient(circle at 8% 12%, rgba(255, 255, 255, 0.86) 0 42px, transparent 44px),
-    linear-gradient(135deg, rgba(255, 240, 246, 0.84), rgba(238, 231, 255, 0.76), rgba(223, 248, 239, 0.72));
-  box-shadow: 0 18px 44px rgba(91, 62, 85, 0.12);
-}
-
-.role-showcase::before,
-.role-showcase::after {
-  content: "";
-  position: absolute;
-  z-index: 2;
-  top: 0;
-  bottom: 0;
-  width: 42px;
-  pointer-events: none;
-}
-
-.role-showcase::before {
-  left: 0;
-  background: linear-gradient(90deg, rgba(255, 243, 247, 0.96), transparent);
-}
-
-.role-showcase::after {
-  right: 0;
-  background: linear-gradient(270deg, rgba(232, 255, 248, 0.96), transparent);
-}
-
-.role-showcase-head {
-  padding: 0 16px 12px;
-}
-
-.role-showcase-head h2 {
-  max-width: 330px;
-  margin-bottom: 6px;
-  color: #312936;
-  font-size: 22px;
-}
-
-.role-showcase-head span {
-  color: #7d687c;
-  font-size: 13px;
-  font-weight: 800;
-  line-height: 1.45;
-}
-
-.role-marquee {
-  display: grid;
-  gap: 12px;
-}
-
-.marquee-row {
-  overflow: hidden;
-}
-
-.marquee-track {
-  display: flex;
-  width: max-content;
-  gap: 12px;
-  padding-inline: 14px;
-  animation: role-marquee 26s linear infinite;
-  will-change: transform;
-}
-
-.marquee-row.reverse .marquee-track {
-  animation-name: role-marquee-reverse;
-  animation-duration: 30s;
-}
-
-.role-showcase:hover .marquee-track {
-  animation-play-state: paused;
-}
-
-.marquee-card {
-  display: grid;
-  grid-template-columns: 76px 118px;
-  gap: 10px;
-  align-items: center;
-  width: 224px;
-  min-height: 104px;
-  padding: 10px;
-  border: 1px solid rgba(120, 88, 116, 0.14);
-  border-radius: 26px;
-  background: rgba(255, 255, 255, 0.76);
-  box-shadow: 0 14px 28px rgba(91, 62, 85, 0.1);
-}
-
-.marquee-card:nth-child(3n + 1) {
-  background: rgba(255, 240, 246, 0.78);
-}
-
-.marquee-card:nth-child(3n + 2) {
-  background: rgba(242, 235, 255, 0.78);
-}
-
-.marquee-card:nth-child(3n + 3) {
-  background: rgba(231, 251, 244, 0.78);
-}
-
-.marquee-art {
-  width: 76px;
-  aspect-ratio: 4 / 3;
-  border-radius: 20px;
-  background-image: url("./assets/image2/shopping-diagnosis-role-cards.png");
-  background-repeat: no-repeat;
-  background-size: 400% 200%;
-  box-shadow: inset 0 0 0 1px rgba(120, 88, 116, 0.12);
-}
-
-.marquee-card strong,
-.marquee-card span {
-  display: block;
-}
-
-.marquee-card strong {
-  color: #312936;
-  font-size: 15px;
-  line-height: 1.16;
-}
-
-.marquee-card span {
-  margin-top: 6px;
-  color: #7f4b64;
-  font-size: 11px;
-  font-weight: 900;
-  line-height: 1.3;
-}
-
 @keyframes role-marquee {
   from {
     transform: translateX(0);
   }
 
   to {
-    transform: translateX(calc(-50% - 6px));
+    transform: translateX(calc(-50% - 7px));
   }
 }
 
 @keyframes role-marquee-reverse {
   from {
-    transform: translateX(calc(-50% - 6px));
+    transform: translateX(calc(-50% - 7px));
   }
 
   to {
@@ -1582,107 +1185,293 @@ h1 {
   }
 }
 
-@media (min-width: 760px) {
+@media (min-width: 780px) {
+  #homeView.active {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .hero,
+  .role-showcase,
+  .quick-stats {
+    grid-column: 1 / -1;
+  }
+
+  .panel {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 779px) {
   .app-shell {
-    width: min(100%, 1080px);
-    padding: 24px;
+    padding: 10px;
   }
 
   .app-shell::before {
-    margin: -24px -24px 18px;
-    padding-inline: 24px;
-  }
-
-  #homeView.active {
-    display: grid;
-    grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.72fr);
-    gap: 16px;
-    align-items: start;
-  }
-
-  #quizView.active,
-  #resultView.active {
-    max-width: 448px;
-    margin: 0 auto;
+    margin: -10px -10px 10px;
   }
 
   .hero {
-    min-height: 520px;
-    grid-row: span 3;
+    min-height: 570px;
+  }
+
+  .hero::before {
+    right: -160px;
+    bottom: -150px;
+    width: 340px;
+    height: 340px;
+  }
+
+  .hero::after {
+    right: 10px;
+    top: 54px;
+  }
+
+  .hero-layout {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .hero-copy-block {
+    padding: 38px 20px 10px;
   }
 
   .hero h1 {
-    max-width: 460px;
-    font-size: 58px;
+    font-size: clamp(62px, 19vw, 88px);
   }
 
   .hero-copy {
-    max-width: 330px;
-    font-size: 19px;
+    max-width: 360px;
+    margin-bottom: 18px;
+    font-size: 16px;
   }
 
-  .hero-card {
-    right: 42px;
-    bottom: 150px;
-    width: 214px;
-    min-height: 240px;
+  .hero-cta {
+    width: 100%;
   }
 
-  .hero-card strong {
-    margin-top: 142px;
+  .hero-deck {
+    min-height: 236px;
+    margin-top: -6px;
+  }
+
+  .deck-card {
+    width: 128px;
+    box-shadow: 5px 6px 0 var(--ink);
+  }
+
+  .deck-card span {
+    left: 7px;
+    top: 7px;
+    padding: 3px 5px;
+    font-size: 8px;
+  }
+
+  .deck-card strong {
+    left: 8px;
+    right: 8px;
+    bottom: 9px;
+    font-size: 15px;
+  }
+
+  .deck-card-a {
+    left: 34px;
+    right: auto;
+    top: 25px;
+  }
+
+  .deck-card-b {
+    left: 50%;
+    right: auto;
+    top: 34px;
+    transform: translateX(-45%) rotate(7deg);
+  }
+
+  .deck-card-c {
+    right: 28px;
+    top: 25px;
+    width: 118px;
   }
 
   .hero-stickers {
-    left: 28px;
-    right: 28px;
-    bottom: 94px;
-  }
-
-  .quick-stats {
-    margin: 0;
-  }
-
-  .role-showcase {
-    grid-column: 1 / -1;
-    margin-top: 2px;
-    padding-block: 20px 22px;
+    left: 10px;
+    bottom: 10px;
   }
 
   .role-showcase-head {
-    display: flex;
-    align-items: end;
-    justify-content: space-between;
-    gap: 20px;
-    padding-inline: 24px;
+    display: block;
+    padding: 18px;
   }
 
-  .role-showcase-head h2 {
-    max-width: 520px;
-    font-size: 28px;
+  .role-showcase-head > span {
+    display: block;
+    margin-top: 10px;
+    text-align: left;
   }
 
-  .role-showcase-head span {
-    max-width: 300px;
-    text-align: right;
-  }
-
-  .marquee-track {
-    gap: 16px;
-    padding-inline: 22px;
+  .marquee-row {
+    min-height: 260px;
   }
 
   .marquee-card {
-    grid-template-columns: 96px 148px;
-    width: 278px;
-    min-height: 128px;
+    grid-template-columns: 122px 96px;
+    width: 242px;
+    min-height: 202px;
   }
 
   .marquee-art {
-    width: 96px;
+    width: 122px;
   }
 
   .marquee-card strong {
-    font-size: 18px;
+    font-size: 14px;
+  }
+
+  .quick-stats div {
+    min-height: 94px;
+    padding: 13px 10px;
+  }
+
+  .quick-stats strong {
+    font-size: 34px;
+  }
+
+  .topline {
+    grid-template-columns: 42px 1fr auto;
+  }
+
+  .topline h1 {
+    font-size: 21px;
+  }
+
+  .question-card {
+    min-height: calc(100vh - 130px);
+    padding: 28px 18px;
+  }
+
+  .question-card::after {
+    display: none;
+  }
+
+  .question-card h2 {
+    margin-bottom: 26px;
+    font-size: 28px;
+  }
+
+  .option-list {
+    grid-template-columns: 1fr;
+    gap: 11px;
+  }
+
+  .option-button {
+    grid-template-columns: 42px 1fr;
+    min-height: 92px;
+    padding: 13px;
+    align-content: center;
+    column-gap: 12px;
+  }
+
+  .option-button b {
+    grid-row: span 2;
+    margin: 0;
+  }
+
+  .option-button strong {
+    font-size: 17px;
+  }
+
+  .diagnosis-card {
+    display: block;
+    padding: 22px 16px;
+  }
+
+  .diagnosis-card::before {
+    display: none;
+  }
+
+  .diagnosis-card h2 {
+    max-width: 290px;
+    font-size: 42px;
+  }
+
+  .stamp {
+    right: 12px;
+    top: 12px;
+  }
+
+  .role-card {
+    width: min(88%, 330px);
+    margin: 18px auto 24px;
+  }
+
+  .report-list {
+    grid-template-columns: 1fr;
+  }
+
+  .report-list .wide {
+    grid-column: auto;
+  }
+
+  .dimension-grid {
+    gap: 5px;
+  }
+
+  .dimension-item {
+    min-height: 74px;
+  }
+
+  .dimension-item span {
+    font-size: 9px;
+  }
+
+  .friend-panel {
+    padding: 22px 16px;
+  }
+
+  .friend-panel::before {
+    position: static;
+    display: inline-block;
+    margin-bottom: 14px;
+  }
+
+  .friend-panel h2 {
+    font-size: 39px;
+  }
+
+  .pair-report {
+    grid-template-columns: 1fr;
+  }
+
+  .action-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero {
+    min-height: 555px;
+  }
+
+  .hero h1 {
+    font-size: 60px;
+  }
+
+  .hero-topline span:last-child {
+    display: none;
+  }
+
+  .deck-card-a {
+    left: 16px;
+  }
+
+  .deck-card-c {
+    right: 12px;
+  }
+
+  .hero-stickers span {
+    padding: 5px 7px;
+    font-size: 9px;
   }
 }
 
@@ -1696,745 +1485,5 @@ h1 {
   .marquee-row {
     overflow-x: auto;
     scrollbar-width: none;
-  }
-}
-
-@media (max-width: 380px) {
-  .app-shell {
-    padding: 12px;
-  }
-
-  h1 {
-    font-size: 34px;
-  }
-
-  .hero {
-    min-height: 398px;
-    padding: 24px 16px;
-  }
-
-  .hero-card {
-    right: 14px;
-    bottom: 112px;
-    width: 144px;
-    min-height: 178px;
-  }
-
-  .hero-stickers {
-    left: 14px;
-    right: 14px;
-    bottom: 92px;
-  }
-
-  .question-card h2 {
-    font-size: 23px;
-  }
-
-  .dimension-grid {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-  }
-
-  .dimension-item {
-    min-height: 70px;
-  }
-
-  .dimension-item span {
-    font-size: 10px;
-  }
-}
-
-/* Clay/Bones inspired flow polish: no title overlap, real visual cards even without bitmap assets. */
-.hero {
-  min-height: auto;
-  padding-bottom: 58px;
-}
-
-.hero h1 {
-  max-width: min(100%, 360px);
-  font-size: clamp(35px, 8vw, 42px);
-}
-
-.hero-copy {
-  max-width: min(100%, 280px);
-}
-
-.hero-card {
-  position: relative;
-  right: auto;
-  bottom: auto;
-  width: min(150px, 40vw);
-  min-height: 166px;
-  margin: 8px 4px 30px auto;
-  overflow: hidden;
-  background-color: #fff8fb;
-  background-image: url("./assets/image2/shopping-diagnosis-role-cards.png");
-  background-repeat: no-repeat;
-  background-size: 400% 200%;
-  background-position: 0% 0%;
-}
-
-.hero-stickers {
-  bottom: 30px;
-}
-
-.hero::after {
-  bottom: 10px;
-}
-
-.hero-card::before,
-.hero-card::after {
-  display: none;
-}
-
-.hero-card p {
-  display: inline-block;
-  padding: 5px 8px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(8px);
-}
-
-.hero-card strong {
-  position: absolute;
-  z-index: 2;
-  left: 12px;
-  right: 12px;
-  bottom: 12px;
-  width: fit-content;
-  margin-top: 0;
-  padding: 5px 9px;
-  border-radius: 999px;
-  font-size: 19px;
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(8px);
-}
-
-.role-showcase {
-  padding-top: 18px;
-}
-
-.marquee-track {
-  gap: 14px;
-}
-
-.marquee-row {
-  position: relative;
-  min-height: 136px;
-  contain: layout paint;
-}
-
-.marquee-track {
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-.marquee-card {
-  grid-template-columns: 116px 126px;
-  width: 270px;
-  min-height: 136px;
-  padding: 10px;
-  overflow: hidden;
-}
-
-.marquee-art {
-  position: relative;
-  width: 116px;
-  height: 106px;
-  aspect-ratio: auto;
-  overflow: hidden;
-  border: 1px solid rgba(120, 88, 116, 0.14);
-  background-color: #fff8fb;
-  background-image: url("./assets/image2/shopping-diagnosis-role-cards.png");
-  background-repeat: no-repeat;
-  background-size: 400% 200%;
-  background-position: var(--sprite-pos, 0% 0%);
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.56),
-    0 12px 22px rgba(91, 62, 85, 0.1);
-}
-
-.marquee-art::before {
-  display: none;
-}
-
-.marquee-art::after {
-  display: none;
-}
-
-.marquee-art i {
-  display: none;
-}
-
-.marquee-card strong {
-  font-size: 16px;
-}
-
-.marquee-card span {
-  max-width: 112px;
-}
-
-.role-card-art,
-.pair-card-art {
-  position: relative;
-  overflow: hidden;
-}
-
-.role-card-art::before,
-.pair-card-art::before {
-  display: none;
-}
-
-.role-card-art::after,
-.pair-card-art::after {
-  display: none;
-}
-
-.role-card-art {
-  background-image: url("./assets/image2/shopping-diagnosis-role-cards.png");
-  background-repeat: no-repeat;
-  background-size: 400% 200%;
-}
-
-.pair-card-art {
-  background-image: url("./assets/image2/shopping-diagnosis-duo-cards.png");
-  background-repeat: no-repeat;
-  background-size: 400% 200%;
-}
-
-.art-bargain {
-  --card-a: #fff0f6;
-  --card-b: #e7fbf4;
-  --card-head: #ff8fb3;
-  --card-body: #70cbb6;
-  --card-chip: #8b73f8;
-}
-
-.art-emotion {
-  --card-a: #f2ebff;
-  --card-b: #fff0f6;
-  --card-head: #8b73f8;
-  --card-body: #ff8fb3;
-  --card-chip: #f4bf58;
-}
-
-.art-impulse {
-  --card-a: #fff4da;
-  --card-b: #ffe4ed;
-  --card-head: #f0a732;
-  --card-body: #ff6f91;
-  --card-chip: #70cbb6;
-}
-
-.art-hoard {
-  --card-a: #e7fbf4;
-  --card-b: #fffaf2;
-  --card-head: #55bda9;
-  --card-body: #f4bf58;
-  --card-chip: #bf5272;
-}
-
-.art-social {
-  --card-a: #eaf0ff;
-  --card-b: #fff0f6;
-  --card-head: #7a8cf4;
-  --card-body: #ff8fb3;
-  --card-chip: #70cbb6;
-}
-
-.art-gift {
-  --card-a: #fff0f6;
-  --card-b: #fff4da;
-  --card-head: #bf5272;
-  --card-body: #ffd36f;
-  --card-chip: #8b73f8;
-}
-
-.art-resale {
-  --card-a: #e7fbf4;
-  --card-b: #eaf0ff;
-  --card-head: #55bda9;
-  --card-body: #7a8cf4;
-  --card-chip: #ff8fb3;
-}
-
-.art-dupe {
-  --card-a: #f2ebff;
-  --card-b: #fffaf2;
-  --card-head: #6f4da8;
-  --card-body: #f0a732;
-  --card-chip: #55bda9;
-}
-
-.pair-coupon-cult,
-.pair-dupe-lab,
-.pair-split-treatment {
-  --card-a: #f2ebff;
-  --card-b: #e7fbf4;
-  --card-head: #8b73f8;
-  --card-body: #70cbb6;
-}
-
-.pair-mood-ambulance,
-.pair-gift-hostages {
-  --card-a: #fff0f6;
-  --card-b: #fff4da;
-  --card-head: #ff8fb3;
-  --card-body: #f4bf58;
-}
-
-.pair-atmosphere-engine,
-.pair-flash-rocket {
-  --card-a: #ffe4ed;
-  --card-b: #eaf0ff;
-  --card-head: #ff6f91;
-  --card-body: #7a8cf4;
-}
-
-.pair-warehouse-roommates,
-.pair-resale-startup {
-  --card-a: #e7fbf4;
-  --card-b: #fffaf2;
-  --card-head: #55bda9;
-  --card-body: #f0a732;
-}
-
-@media (min-width: 760px) {
-  .hero {
-    min-height: auto;
-    padding-bottom: 20px;
-  }
-
-  .hero h1 {
-    max-width: 460px;
-    font-size: 58px;
-  }
-
-  .hero-copy {
-    max-width: 330px;
-  }
-
-  .hero-card {
-    position: relative;
-    right: auto;
-    bottom: auto;
-    width: 190px;
-    min-height: 214px;
-    margin: 10px 28px 52px auto;
-  }
-
-  .hero-stickers {
-    bottom: 94px;
-  }
-
-  .marquee-card {
-    grid-template-columns: 136px 148px;
-    width: 316px;
-    min-height: 154px;
-  }
-
-  .marquee-art {
-    width: 136px;
-    height: 124px;
-  }
-
-  .marquee-row {
-    min-height: 154px;
-  }
-
-  .marquee-card span {
-    max-width: 140px;
-  }
-}
-
-@media (max-width: 380px) {
-  .hero {
-    min-height: auto;
-    padding: 24px 16px 58px;
-  }
-
-  .hero h1 {
-    font-size: 34px;
-  }
-
-  .hero-card {
-    position: relative;
-    right: auto;
-    bottom: auto;
-    width: 134px;
-    min-height: 158px;
-    margin: 6px 0 30px auto;
-  }
-
-  .hero-stickers {
-    bottom: 28px;
-  }
-
-  .marquee-card {
-    grid-template-columns: 96px 112px;
-    width: 234px;
-    min-height: 118px;
-  }
-
-  .marquee-art {
-    width: 96px;
-    height: 86px;
-  }
-
-  .marquee-row {
-    min-height: 118px;
-  }
-}
-
-/* Final homepage tightening and two-lane Image2 showcase. */
-html,
-body {
-  overflow-y: auto;
-}
-
-body {
-  touch-action: pan-y;
-}
-
-#homeView.active {
-  touch-action: pan-y;
-}
-
-.hero {
-  min-height: 308px;
-  padding: 24px 20px 58px;
-}
-
-.hero h1 {
-  max-width: min(100%, 360px);
-  margin-bottom: 10px;
-  font-size: clamp(36px, 8.4vw, 46px);
-}
-
-.hero-copy {
-  max-width: 260px;
-}
-
-.hero-card {
-  display: none;
-}
-
-.hero-stickers {
-  right: 16px;
-  bottom: 36px;
-}
-
-.hero::after {
-  bottom: 12px;
-}
-
-.role-showcase {
-  padding-block: 16px 18px;
-}
-
-.role-marquee {
-  gap: 14px;
-}
-
-.marquee-row {
-  min-height: 208px;
-  overflow: hidden;
-  contain: paint;
-}
-
-.marquee-row::before {
-  content: "单人角色卡";
-  position: absolute;
-  z-index: 3;
-  left: 16px;
-  top: 0;
-  padding: 6px 10px;
-  border-radius: 999px;
-  color: #7f4b64;
-  font-size: 12px;
-  font-weight: 900;
-  background: rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(10px);
-}
-
-.marquee-row.duo::before {
-  content: "双人搭档卡";
-  color: #4c8c82;
-}
-
-.marquee-track {
-  top: 30px;
-}
-
-.marquee-card {
-  display: flex;
-  width: 172px;
-  min-height: 0;
-  padding: 8px;
-  flex-direction: column;
-  gap: 8px;
-  align-items: stretch;
-  border-radius: 22px;
-}
-
-.marquee-art {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 3;
-  flex: 0 0 auto;
-  border-radius: 17px;
-  background-size: 400% 200%;
-}
-
-.single-art {
-  background-image: url("./assets/image2/shopping-diagnosis-role-cards.png");
-}
-
-.duo-art {
-  background-image: url("./assets/image2/shopping-diagnosis-duo-cards.png");
-}
-
-.marquee-card strong {
-  font-size: 14px;
-  line-height: 1.15;
-}
-
-.marquee-card span {
-  max-width: none;
-  margin-top: 4px;
-  font-size: 10px;
-}
-
-@media (min-width: 760px) {
-  .hero {
-    min-height: 350px;
-    padding: 30px 28px 64px;
-  }
-
-  .hero h1 {
-    max-width: 520px;
-    font-size: 58px;
-  }
-
-  .hero-copy {
-    max-width: 330px;
-  }
-
-  .hero-stickers {
-    bottom: 38px;
-  }
-
-  .hero::after {
-    bottom: 14px;
-  }
-
-  .marquee-row {
-    min-height: 252px;
-  }
-
-  .marquee-track {
-    gap: 18px;
-    top: 34px;
-  }
-
-  .marquee-card {
-    width: 214px;
-    padding: 10px;
-  }
-
-  .marquee-art {
-    width: 100%;
-    height: auto;
-  }
-
-  .marquee-card strong {
-    font-size: 17px;
-  }
-
-  .marquee-card span {
-    font-size: 11px;
-  }
-}
-
-@media (max-width: 380px) {
-  .hero {
-    min-height: 300px;
-    padding: 22px 16px 58px;
-  }
-
-  .hero h1 {
-    max-width: 310px;
-    font-size: 34px;
-  }
-
-  .hero-copy {
-    max-width: 220px;
-  }
-
-  .hero-stickers {
-    bottom: 32px;
-  }
-
-  .marquee-row {
-    min-height: 196px;
-  }
-
-  .marquee-card {
-    width: 156px;
-  }
-
-  .marquee-art {
-    width: 100%;
-    height: auto;
-  }
-}
-
-/* Final compact cover and true Image2 card ratio. */
-.hero {
-  display: flex;
-  min-height: 0 !important;
-  padding: 24px 20px 22px !important;
-  flex-direction: column;
-}
-
-.hero .eyebrow {
-  order: 1;
-  margin-bottom: 8px;
-}
-
-.hero h1 {
-  order: 2;
-  max-width: min(100%, 390px);
-  margin-bottom: 10px;
-  font-size: clamp(38px, 9vw, 48px);
-  line-height: 0.98;
-}
-
-.hero-copy {
-  order: 3;
-  max-width: min(100%, 330px);
-  margin-bottom: 16px;
-}
-
-.hero-stickers {
-  position: static !important;
-  order: 4;
-  display: flex;
-  width: 100%;
-  margin-top: 4px;
-  flex-wrap: wrap;
-  gap: 8px;
-  transform: none;
-}
-
-.hero::after,
-.hero-card {
-  display: none !important;
-}
-
-.role-showcase {
-  padding-block: 16px 18px;
-}
-
-.marquee-row {
-  min-height: 266px;
-}
-
-.marquee-track {
-  top: 32px;
-}
-
-.marquee-card {
-  width: 154px;
-  min-height: 0;
-  padding: 8px;
-}
-
-.marquee-art {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 3 / 4;
-  border-radius: 18px;
-  background-size: 400% 200%;
-  background-position: var(--sprite-pos, 0% 0%);
-}
-
-.single-art {
-  background-image: url("./assets/image2/shopping-diagnosis-role-cards.png");
-}
-
-.duo-art {
-  background-image: url("./assets/image2/shopping-diagnosis-duo-cards.png");
-}
-
-.marquee-card strong {
-  font-size: 14px;
-}
-
-.marquee-card span {
-  font-size: 10px;
-}
-
-@media (min-width: 760px) {
-  .hero {
-    padding: 30px 28px 28px !important;
-  }
-
-  .hero h1 {
-    max-width: 580px;
-    font-size: 62px;
-  }
-
-  .hero-copy {
-    margin-bottom: 18px;
-  }
-
-  .hero-stickers {
-    max-width: 560px;
-  }
-
-  .marquee-row {
-    min-height: 318px;
-  }
-
-  .marquee-track {
-    top: 36px;
-  }
-
-  .marquee-card {
-    width: 188px;
-    padding: 10px;
-  }
-
-  .marquee-card strong {
-    font-size: 16px;
-  }
-
-  .marquee-card span {
-    font-size: 11px;
-  }
-}
-
-@media (max-width: 380px) {
-  .hero {
-    padding: 22px 16px 20px !important;
-  }
-
-  .hero h1 {
-    max-width: 310px;
-    font-size: 34px;
-  }
-
-  .hero-copy {
-    max-width: 240px;
-    margin-bottom: 14px;
-  }
-
-  .marquee-row {
-    min-height: 246px;
-  }
-
-  .marquee-card {
-    width: 140px;
   }
 }
