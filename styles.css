@@ -1643,7 +1643,7 @@ html[lang="en"] .friend-panel::before {
   line-height: 1.04;
 }
 
-.guide-section .section-heading h2 {
+html[lang="zh-CN"] .guide-section .section-heading h2 {
   white-space: nowrap;
 }
 
@@ -2112,7 +2112,7 @@ html[lang="en"] .friend-panel::before {
     padding: 22px 18px;
   }
 
-  .guide-section .section-heading h2 {
+  html[lang="zh-CN"] .guide-section .section-heading h2 {
     white-space: normal;
   }
 
