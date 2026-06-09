@@ -23,7 +23,7 @@
     <link rel="preload" as="image" href="./assets/image2/shopping-diagnosis-role-cards.webp" type="image/webp" />
     <link rel="preload" as="image" href="./assets/image2/shopping-diagnosis-duo-cards.webp" type="image/webp" />
     <title>购物病历 | 618 前先挂个号</title>
-    <link rel="stylesheet" href="./styles.css?v=mobile-title-1" />
+    <link rel="stylesheet" href="./styles.css?v=hero-controls-1" />
     <script
       defer
       src="https://cloud.umami.is/script.js"
@@ -104,7 +104,15 @@
             </div>
             <span data-zh="上排：单人病历人格 / 下排：闺蜜共犯关系" data-en="Top: solo personality files / Bottom: friend accomplice files">上排：单人病历人格 / 下排：闺蜜共犯关系</span>
           </div>
-          <div id="roleMarquee" class="role-marquee" aria-hidden="true"></div>
+          <div
+            id="roleMarquee"
+            class="role-marquee"
+            role="button"
+            tabindex="0"
+            aria-pressed="false"
+            data-aria-zh="暂停或继续人格卡片滚动"
+            data-aria-en="Pause or resume the personality cards"
+          ></div>
         </section>
 
         <div class="quick-stats" aria-label="产品特点">
@@ -326,8 +334,19 @@
       </footer>
     </main>
 
+    <button
+      id="backToTopBtn"
+      class="back-to-top"
+      type="button"
+      data-aria-zh="返回顶部"
+      data-aria-en="Back to top"
+      aria-label="返回顶部"
+      title="返回顶部"
+    >
+      <span aria-hidden="true">↑</span>
+    </button>
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
     <script src="./translations.js?v=english-polish-1"></script>
-    <script src="./app.js?v=mobile-assets-1"></script>
+    <script src="./app.js?v=hero-controls-1"></script>
   </body>
 </html>

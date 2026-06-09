@@ -365,6 +365,12 @@ function applyLanguage(language, updateUrl = true) {
     button.classList.toggle("active", active);
   });
 
+  const backToTopButton = $("backToTopBtn");
+  if (backToTopButton) {
+    const label = isEnglish() ? "Back to top" : "返回顶部";
+    backToTopButton.title = label;
+  }
+
   document.title = isEnglish()
     ? "Shopping Bingli | Discover Your Wallet Personality"
     : "购物病历 | 618 前先挂个号";
@@ -997,6 +1003,37 @@ function bindEvents() {
   document.querySelectorAll("[data-lang-switch]").forEach((button) => {
     button.addEventListener("click", () => applyLanguage(button.dataset.langSwitch));
   });
+  const roleMarquee = $("roleMarquee");
+  const toggleRoleMarquee = () => {
+    const paused = roleMarquee.classList.toggle("is-paused");
+    roleMarquee.setAttribute("aria-pressed", String(paused));
+    toast(
+      isEnglish()
+        ? paused
+          ? "Personality cards paused. Tap again to resume."
+          : "Personality cards are moving again."
+        : paused
+          ? "人格卡片已暂停，再点一次继续。"
+          : "人格卡片继续巡游。"
+    );
+  };
+  roleMarquee.addEventListener("click", toggleRoleMarquee);
+  roleMarquee.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    toggleRoleMarquee();
+  });
+
+  const backToTopButton = $("backToTopBtn");
+  const updateBackToTop = () => {
+    backToTopButton.classList.toggle("visible", window.scrollY > 560);
+  };
+  backToTopButton.addEventListener("click", () => {
+    const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+    window.scrollTo({ top: 0, behavior });
+  });
+  window.addEventListener("scroll", updateBackToTop, { passive: true });
+  updateBackToTop();
   window.addEventListener("hashchange", loadFriendFromHash);
 }
 

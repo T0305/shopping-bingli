@@ -461,8 +461,25 @@ html[lang="en"] .marquee-row.duo::before {
   animation-duration: 38s;
 }
 
-.role-showcase:hover .marquee-track {
+.role-marquee.is-paused .marquee-track {
   animation-play-state: paused;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .role-showcase:hover .marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+.role-marquee {
+  cursor: pointer;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.role-marquee:focus-visible {
+  outline: 4px solid var(--acid);
+  outline-offset: -6px;
 }
 
 .marquee-card {
@@ -1213,6 +1230,42 @@ html[lang="en"] .friend-panel::before {
   transform: translate(-50%, 0);
 }
 
+.back-to-top {
+  position: fixed;
+  right: max(18px, calc((100vw - 1180px) / 2 + 18px));
+  bottom: 18px;
+  z-index: 55;
+  display: grid;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 2px solid var(--ink);
+  place-items: center;
+  color: var(--ink);
+  font: 1000 25px/1 Arial, sans-serif;
+  background: var(--acid);
+  box-shadow: 5px 6px 0 var(--ink);
+  opacity: 0;
+  transform: translateY(16px) rotate(4deg);
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease;
+  pointer-events: none;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0) rotate(4deg);
+  pointer-events: auto;
+}
+
+.back-to-top:hover,
+.back-to-top:focus-visible {
+  box-shadow: 2px 3px 0 var(--ink);
+  transform: translate(3px, 3px) rotate(0);
+}
+
 @keyframes role-marquee {
   from {
     transform: translateX(0);
@@ -1248,6 +1301,81 @@ html[lang="en"] .friend-panel::before {
 
   .panel {
     margin-top: 0;
+  }
+
+  .hero {
+    min-height: 490px;
+    background:
+      linear-gradient(112deg, transparent 0 59%, rgba(255, 255, 255, 0.58) 59% 72%, transparent 72%),
+      var(--pink-soft);
+  }
+
+  .hero::before {
+    right: -150px;
+    bottom: -205px;
+    width: 440px;
+    height: 440px;
+  }
+
+  .hero::after {
+    right: 24px;
+    top: 54px;
+    font-size: 10px;
+    transform: rotate(4deg);
+  }
+
+  .hero-layout {
+    grid-template-columns: minmax(0, 1.18fr) minmax(390px, 0.82fr);
+    min-height: 420px;
+  }
+
+  .hero-copy-block {
+    padding: 44px clamp(28px, 4.2vw, 58px) 62px;
+  }
+
+  .hero h1 {
+    margin-bottom: 16px;
+    font-size: clamp(68px, 7.2vw, 96px);
+    line-height: 0.82;
+  }
+
+  .hero-copy {
+    max-width: 500px;
+    margin-bottom: 22px;
+    font-size: clamp(16px, 1.65vw, 20px);
+  }
+
+  .hero-deck {
+    min-height: 420px;
+  }
+
+  .deck-card {
+    width: 180px;
+    box-shadow: 7px 8px 0 var(--ink);
+  }
+
+  .deck-card strong {
+    font-size: 20px;
+  }
+
+  .deck-card-a {
+    right: 142px;
+    top: 58px;
+  }
+
+  .deck-card-b {
+    right: 20px;
+    top: 88px;
+  }
+
+  .deck-card-c {
+    right: 108px;
+    top: 176px;
+    width: 156px;
+  }
+
+  .hero-stickers {
+    bottom: 14px;
   }
 }
 
@@ -1505,6 +1633,14 @@ html[lang="en"] .friend-panel::before {
 
   .action-grid {
     grid-template-columns: 1fr;
+  }
+
+  .back-to-top {
+    right: 13px;
+    bottom: 13px;
+    width: 44px;
+    height: 44px;
+    box-shadow: 4px 5px 0 var(--ink);
   }
 }
 
