@@ -444,7 +444,7 @@ function renderRoleMarquee() {
         return `
         <article class="marquee-card ${rowClass}-card">
           <div class="marquee-art ${artClass}" style="--sprite-pos:${item.card || roleCards[item.key]}" aria-hidden="true"></div>
-          <div>
+          <div class="marquee-copy">
             <strong>${name}</strong>
             <span>${subtype}</span>
           </div>
