@@ -1637,10 +1637,14 @@ html[lang="en"] .friend-panel::before {
 }
 
 .section-heading h2 {
-  max-width: 780px;
+  max-width: none;
   margin-bottom: 12px;
   font-size: clamp(28px, 3.6vw, 44px);
   line-height: 1.04;
+}
+
+.guide-section .section-heading h2 {
+  white-space: nowrap;
 }
 
 .section-heading > p:last-child {
@@ -2106,6 +2110,10 @@ html[lang="en"] .friend-panel::before {
 
   .section-heading {
     padding: 22px 18px;
+  }
+
+  .guide-section .section-heading h2 {
+    white-space: normal;
   }
 
   .dimension-explainer {
